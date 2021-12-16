@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445531586120",
+    "project_id": "private-teacher-6b7f7",
+    "storage_bucket": "private-teacher-6b7f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445531586120:android:56c3f5327dad0673b1a27d",
+        "android_client_info": {
+          "package_name": "com.example.privateteacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445531586120-rulsqguvk2squ94g0k7r99brp9s09e3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaXFYUCiNA1W32PkYL3tDUQekeU88pS80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445531586120-rulsqguvk2squ94g0k7r99brp9s09e3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

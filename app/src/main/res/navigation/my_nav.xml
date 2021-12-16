@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.privateteacher.ui.Login"
+        android:label="login"
+        tools:layout="@layout/login_page"
+        >
+        <action
+            android:id="@+id/action_login_to_signupTeacher"
+            app:destination="@id/signupTeacher" />
+        <action
+            android:id="@+id/action_login_to_signupStudent"
+            app:destination="@id/signupStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupTeacher"
+        android:name="com.example.privateteacher.ui.SignupTeacher"
+        android:label="signupTeacher"
+        tools:layout=""
+        >
+        <action
+            android:id="@+id/action_signupTeacher_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_signupTeacher_to_home_fragment2"
+            app:destination="@id/home_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.example.privateteacher.ui.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_home_fragment_to_signupStudent"
+            app:destination="@id/signupStudent" />
+        <action
+            android:id="@+id/action_home_fragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.privateteacher.ui.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.example.privateteacher.ui.RequestFragment"
+        android:label="fragment_serach"
+        tools:layout="@layout/fragment_request" >
+        <action
+            android:id="@+id/action_serachFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupStudent"
+        android:name="com.example.privateteacher.ui.SignupStudent"
+        android:label="sign_up_student"
+        tools:layout="@layout/sign_up_student" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.privateteacher.ui.DetailFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="teacherKeyArg"
+            app:argType="com.example.privateteacher.model.Teacher" />
+    </fragment>
+</navigation>
