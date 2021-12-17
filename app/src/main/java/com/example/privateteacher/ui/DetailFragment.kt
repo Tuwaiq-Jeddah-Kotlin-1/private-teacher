@@ -19,6 +19,8 @@ import com.example.privateteacher.ViewModel
 import com.example.privateteacher.model.Request
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class DetailFragment : Fragment() {
 
@@ -157,13 +159,22 @@ class DetailFragment : Fragment() {
             teacherUid = teacherUid,
             studentUid = studentUid,
         )
+
+        val current = LocalDateTime.now()
+
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+        val formatted = current.format(formatter)
+        val studentId=FirebaseAuth.getInstance().currentUser?.uid
+        request.idrequest="${studentUid}${formatted}"
         saveUserFireStore(request)
 
     }
 
     private fun saveUserFireStore(request: Request) {
         try {
-            db.collection("Request").add(request).addOnSuccessListener {
+
+            db.collection("Request").document(request.idrequest).set(request).addOnSuccessListener {
 
 
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()

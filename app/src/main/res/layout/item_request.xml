@@ -78,7 +78,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/major"
+                android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -95,7 +95,7 @@
             android:orientation="horizontal">
             <Button
                 android:layout_width="match_parent"
-                android:id="@+id/btn1"
+                android:id="@+id/acceptBtn"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:text="accept"
@@ -104,9 +104,9 @@
             <Button
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
-                android:id="@+id/btn2"
+                android:id="@+id/rejectBtn"
                 android:layout_height="wrap_content"
-                android:text="refuse"
+                android:text="reject"
                 android:textColor="@android:color/white"
                 android:textSize="15dp" />
             <TextView

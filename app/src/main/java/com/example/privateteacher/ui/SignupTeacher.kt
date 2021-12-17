@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.signup_page.*
 import java.text.SimpleDateFormat
-
 private const val TAG = "SignupTeacher"
 
 class SignupTeacher : Fragment() {
@@ -39,6 +38,8 @@ class SignupTeacher : Fragment() {
     private lateinit var phoneNumber: EditText
     private var db = FirebaseFirestore.getInstance()
     private val refAuth = FirebaseAuth.getInstance()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -254,7 +255,7 @@ class SignupTeacher : Fragment() {
             db.collection("Teacher").document(uid!!).set(teacher).addOnSuccessListener {
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
 
-                findNavController().navigate(R.id.home_fragment)
+                findNavController().navigate(R.id.requestFragment)
 
             }
 
