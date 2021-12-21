@@ -15,7 +15,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.privateteacher.R
 import com.example.privateteacher.model.Student
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 
 private const val TAG = "SignupStudent"
 
@@ -119,6 +121,7 @@ class SignupStudent : Fragment() {
         try {
             db.collection("Student").document("$uid").set(student).addOnSuccessListener {
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
+                retriveAndStoreToken()
                 findNavController().navigate(R.id.home_fragment)
             }
 
@@ -130,5 +133,19 @@ class SignupStudent : Fragment() {
         }
     }
 
-
+    private fun retriveAndStoreToken(){
+        //we have token
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener {
+                    task->
+                if (task.isSuccessful){
+                    val token:String? = task.result
+                    val userId: String =FirebaseAuth.getInstance().currentUser!!.uid
+                    //store it inside firebase
+                    FirebaseDatabase.getInstance().getReference("token")
+                        .child(userId)
+                        .setValue(token)
+                }
+            }
+    }
 }

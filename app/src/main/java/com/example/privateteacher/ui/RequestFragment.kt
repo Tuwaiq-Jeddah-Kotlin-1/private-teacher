@@ -12,6 +12,10 @@ import com.example.privateteacher.R
 import com.example.privateteacher.model.Request
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class RequestFragment : Fragment() {
@@ -37,10 +41,68 @@ class RequestFragment : Fragment() {
         requestList = arrayListOf()
         myRequestAdapter = RequestAdapter(requestList)
         recyclerView.adapter = myRequestAdapter
-        eventChangeListener()
+        val userID=FirebaseAuth.getInstance().currentUser?.uid
+        cheakStudentOrTeacher(userID.toString())
+    }
+    fun cheakStudentOrTeacher(userID:String) = CoroutineScope(Dispatchers.IO).launch {
+
+        try {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("Teacher")
+                .document("$userID")
+                .get().addOnCompleteListener { it
+
+                    if (it.result?.exists()!!) {
+
+                        requestTeacher()
+
+                    } else {
+
+requestStudent()
+                    }
+
+
+
+                }
+
+        } catch (e: Exception) {
+            withContext(Dispatchers.Main) {
+                Log.e("FUNCTION createUserFire", "${e.message}")
+            }
+        }
+
+
+    }
+    private fun requestStudent(){
+        var uid=FirebaseAuth.getInstance().currentUser?.uid
+        db = FirebaseFirestore.getInstance()
+
+        db.collection("Request").whereEqualTo("studentUid",uid.toString()).addSnapshotListener(object : EventListener<QuerySnapshot> {
+
+            override fun onEvent(
+                value: QuerySnapshot?,
+                error: FirebaseFirestoreException?
+            ) {
+                if (error != null) {
+                    Log.e("fireStore Error", error.message.toString())
+                    return
+                }
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        requestList.add(dc.document.toObject(Request::class.java))
+                    }
+                }
+                myRequestAdapter.notifyDataSetChanged()
+
+
+            }
+
+        })
+
     }
 
-    private fun eventChangeListener() {
+
+    private fun requestTeacher() {
         var uid=FirebaseAuth.getInstance().currentUser?.uid
         db = FirebaseFirestore.getInstance()
 

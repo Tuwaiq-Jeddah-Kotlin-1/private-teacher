@@ -17,6 +17,12 @@
         <action
             android:id="@+id/action_login_to_signupStudent"
             app:destination="@id/signupStudent" />
+        <action
+            android:id="@+id/action_login_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_login_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupTeacher"
@@ -75,4 +81,9 @@
             android:id="@+id/action_detailFragment_to_requestFragment"
             app:destination="@id/requestFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/upDate_Teatchr"
+        android:name="com.example.privateteacher.UpdateTeacher"
+        android:label="fragment_up_date__teatchr"
+        tools:layout="@layout/fragment_up_date__teatchr" />
 </navigation>

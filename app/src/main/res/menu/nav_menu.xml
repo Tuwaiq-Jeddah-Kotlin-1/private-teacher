@@ -10,6 +10,11 @@
         android:icon="@drawable/request"
         android:title="request"/>
     <item
+        android:id="@+id/upDate_Teatchr"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Profile"/>
+
+    <item
         android:id="@+id/settingFragment"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="setting"/>

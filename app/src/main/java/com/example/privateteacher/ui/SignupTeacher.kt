@@ -1,6 +1,7 @@
 package com.example.privateteacher.ui
 
 import android.app.TimePickerDialog
+import android.content.Context.MODE_PRIVATE
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.TextUtils
@@ -18,6 +19,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.signup_page.*
 import java.text.SimpleDateFormat
 private const val TAG = "SignupTeacher"
+ const val PREFERENCE = "PREFERENCE"
+ const val NAME= "NAME"
+ const val MAJOR = "MAJOR"
+ const val SUBJECT = "SUBJECT"
+ const val LEVEL = "LEVEL"
+ const val START_TIME = "START_TIME"
+ const val END_TIME = "END_TIME"
+ const val PHONE_NUMBER = "PHONE_NUMBER"
+
 
 class SignupTeacher : Fragment() {
 
@@ -33,12 +43,12 @@ class SignupTeacher : Fragment() {
     private lateinit var sTime: ImageButton
     private lateinit var endTime: TextView
     private lateinit var eTime: ImageButton
+    // HERE SAVE THE VALUE
     private var timeStart: Int = 0
     private var timeEnd: Int = 0
     private lateinit var phoneNumber: EditText
     private var db = FirebaseFirestore.getInstance()
     private val refAuth = FirebaseAuth.getInstance()
-
 
 
     override fun onCreateView(
@@ -117,6 +127,7 @@ class SignupTeacher : Fragment() {
                                     "You were registered successfully",
                                     Toast.LENGTH_LONG
                                 ).show()
+                                //call function
                                 // here the authentacition sucessed + generate UID
 
                                 saveUserFireStore(
@@ -195,11 +206,6 @@ class SignupTeacher : Fragment() {
             timeEnd = hour
             Toast.makeText(requireContext(), timeEnd.toString(), Toast.LENGTH_SHORT).show()
 
-            // MIN: hours, minute, secconds
-//            if (endTime.toString().toInt() >= starTime.toString().toInt()) {
-//
-//              Toast.makeText(requireContext(), "end time must be bigger than start time", Toast.LENGTH_SHORT).show()
-//            }
         }
 
 
@@ -214,17 +220,6 @@ class SignupTeacher : Fragment() {
         return timeEnd
 
     }
-    /* private fun saveData(username: String, email: String,major:String,subject:String,level:String,starrtTime:Int,endTime:Int,phoneNumber:String ) {
-       *//*  if (endTime <= starrtTime) {
-
-        Toast.makeText(requireContext(), "end time must be bigger than start time", Toast.LENGTH_SHORT).show()
-         }else{*//*
-
-            saveUserFireStore(teacher)
-
-       // }
-
-    }*/
 
 
     private fun saveUserFireStore(
@@ -238,7 +233,6 @@ class SignupTeacher : Fragment() {
         phoneNumber: String
     ) {// = CoroutineScope(Dispatchers.IO).launch {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
-//uid!!,
         val teacher = Teacher(
             teacherId = uid.toString(),
             name = username,
@@ -254,8 +248,14 @@ class SignupTeacher : Fragment() {
         try {
             db.collection("Teacher").document(uid!!).set(teacher).addOnSuccessListener {
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
+//save in shared preference
+                 val preference = requireContext().getSharedPreferences(PREFERENCE,MODE_PRIVATE)
+                preference.edit().putString(NAME,username).putString(SUBJECT,subject).putString(
+                    MAJOR, major).putString(LEVEL,level).putInt(START_TIME,starrtTime).putInt(
+                    END_TIME,endTime).putString(PHONE_NUMBER, phoneNumber).putString(MAJOR,major).apply()
 
-                findNavController().navigate(R.id.requestFragment)
+
+                findNavController().navigate(R.id.home_fragment)
 
             }
 
@@ -266,7 +266,6 @@ class SignupTeacher : Fragment() {
             //  }
         }
     }
-
 
 }
 
