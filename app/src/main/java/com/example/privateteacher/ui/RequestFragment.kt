@@ -1,10 +1,13 @@
 package com.example.privateteacher.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,92 +44,95 @@ class RequestFragment : Fragment() {
         requestList = arrayListOf()
         myRequestAdapter = RequestAdapter(requestList)
         recyclerView.adapter = myRequestAdapter
-        val userID=FirebaseAuth.getInstance().currentUser?.uid
+        val userID = FirebaseAuth.getInstance().currentUser?.uid
         cheakStudentOrTeacher(userID.toString())
     }
-    fun cheakStudentOrTeacher(userID:String) = CoroutineScope(Dispatchers.IO).launch {
 
-        try {
-            val db = FirebaseFirestore.getInstance()
-            db.collection("Teacher")
-                .document("$userID")
-                .get().addOnCompleteListener { it
-
+    fun cheakStudentOrTeacher(userID: String) = CoroutineScope(Dispatchers.IO).launch {
+        //shared preference
+        lateinit var level: Spinner
+        lateinit var name: TextView
+          val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
+        /*    preference
+               .edit()
+               .putString(NAME, name.text.toString())
+               .putString(LEVEL, level.selectedItem.toString())
+               .apply()
+//   */
+      try {
+         val db = FirebaseFirestore.getInstance()
+           db.collection("Teacher")
+               .document("$userID")
+               .get().addOnCompleteListener {
+                   it
                     if (it.result?.exists()!!) {
-
-                        requestTeacher()
-
-                    } else {
-
-requestStudent()
-                    }
-
-
-
-                }
-
+                       requestTeacher()
+                      preference.edit().putString(TYPE,TEACHER).apply()
+                   } else {
+                        requestStudent()
+                       preference.edit().putString(TYPE,STUDENT).apply()
+                 }
+               }
         } catch (e: Exception) {
             withContext(Dispatchers.Main) {
                 Log.e("FUNCTION createUserFire", "${e.message}")
             }
         }
-
-
     }
-    private fun requestStudent(){
-        var uid=FirebaseAuth.getInstance().currentUser?.uid
+    private fun requestStudent() {
+        var uid = FirebaseAuth.getInstance().currentUser?.uid
         db = FirebaseFirestore.getInstance()
-
-        db.collection("Request").whereEqualTo("studentUid",uid.toString()).addSnapshotListener(object : EventListener<QuerySnapshot> {
-
-            override fun onEvent(
-                value: QuerySnapshot?,
-                error: FirebaseFirestoreException?
-            ) {
-                if (error != null) {
-                    Log.e("fireStore Error", error.message.toString())
-                    return
-                }
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-                        requestList.add(dc.document.toObject(Request::class.java))
+        db.collection("Request").whereEqualTo("studentUid", uid.toString())
+            .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                override fun onEvent(
+                    value: QuerySnapshot?,
+                    error: FirebaseFirestoreException?
+                ) {
+                    if (error != null) {
+                        Log.e("fireStore Error", error.message.toString())
+                        return
                     }
+                    for (dc: DocumentChange in value?.documentChanges!!) {
+                        if (dc.type == DocumentChange.Type.ADDED) {
+                            requestList.add(dc.document.toObject(Request::class.java))
+                            Log.e("Error","${requestList.size}")
+                        }
+                    }
+                    myRequestAdapter.notifyDataSetChanged()
+
+
                 }
-                myRequestAdapter.notifyDataSetChanged()
 
-
-            }
-
-        })
+            })
 
     }
-
-
     private fun requestTeacher() {
-        var uid=FirebaseAuth.getInstance().currentUser?.uid
+        var uid = FirebaseAuth.getInstance().currentUser?.uid
         db = FirebaseFirestore.getInstance()
 
-        db.collection("Request").whereEqualTo("teacherUid",uid.toString()).addSnapshotListener(object : EventListener<QuerySnapshot> {
+        db.collection("Request").whereEqualTo("teacherUid", uid.toString())
+            .addSnapshotListener(object : EventListener<QuerySnapshot> {
 
-            override fun onEvent(
-                value: QuerySnapshot?,
-                error: FirebaseFirestoreException?
-            ) {
-                if (error != null) {
-                    Log.e("fireStore Error", error.message.toString())
-                    return
-                }
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-                        requestList.add(dc.document.toObject(Request::class.java))
+                override fun onEvent(
+                    value: QuerySnapshot?,
+                    error: FirebaseFirestoreException?
+                ) {
+                    if (error != null) {
+                        Log.e("fireStore Error", error.message.toString())
+                        return
                     }
+                    for (dc: DocumentChange in value?.documentChanges!!) {
+                        if (dc.type == DocumentChange.Type.ADDED) {
+                            requestList.add(dc.document.toObject(Request::class.java))
+                            Log.e("Error","${requestList.size}")
+                        }
+                    }
+                    myRequestAdapter.notifyDataSetChanged()
+
+
                 }
-                myRequestAdapter.notifyDataSetChanged()
 
-
-            }
-
-        })
+            })
 
     }
 

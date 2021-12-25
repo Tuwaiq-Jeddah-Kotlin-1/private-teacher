@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,11 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
         holder.subject.text = request.subject
         holder.timeval.text = request.timeVal.toString()
         holder.stateText.text = request.state
+holder.idRequest=request.idrequest
+        holder.deletRequst.setOnClickListener {
+            val deletRequest=db.collection("Request").document(request.idrequest).delete()
+            deletRequest
+        }
        if (isTeacher){
            if(request.state == "Pending"){
                holder.acceptButton.visibility = View.VISIBLE
@@ -73,18 +79,21 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
                }
            }else{
                holder.acceptButton.visibility = View.GONE
+
                holder.rejectButton.visibility = View.GONE
                changeColorState(holder,request.state)
            }
        }else{
+
+           holder.deletRequst.visibility=View.VISIBLE
            holder.acceptButton.visibility = View.GONE
            holder.rejectButton.visibility = View.GONE
            changeColorState(holder,request.state)
        }
 
     }
-    fun changeColorState(holder: MyHolder, state:String){
 
+    fun changeColorState(holder: MyHolder, state:String){
         holder.acceptButton.visibility = View.GONE
         holder.rejectButton.visibility = View.GONE
         if (state == "accept"){
@@ -107,10 +116,10 @@ class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val timeval: TextView = itemView.findViewById(R.id.time)
     val state: TextView = itemView.findViewById(R.id.circle_image)
     val stateText: TextView = itemView.findViewById(R.id.stateText)
-
-   // lateinit var idUser: String
     var acceptButton: Button = itemView.findViewById(R.id.acceptBtn)
     var rejectButton: Button = itemView.findViewById(R.id.rejectBtn)
+    var deletRequst:ImageView=itemView.findViewById(R.id.deletRequest)
+    lateinit var idRequest:String
 
 
 }

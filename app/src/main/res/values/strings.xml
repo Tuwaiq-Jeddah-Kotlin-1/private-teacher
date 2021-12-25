@@ -12,5 +12,22 @@
     <string name="name" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="remember_me">rmember_me</string>
+    <string-array name="Subject">
+        <item>Math</item>
+        <item>The holy Quran and its recitation</item>
+        <item>Islamic studies</item>
+        <item>Social studies</item>
+        <item>Arabic</item>
+        <item>English</item>
+        <item>Science</item>
+        <item>Biology</item>
+        <item>physics</item>
+        <item>digital technology</item>
+    </string-array>
+    <string-array name="Level">
+    <item>primary</item>
+    <item>middle</item>
+    <item>high</item>
+    </string-array>
 </resources>

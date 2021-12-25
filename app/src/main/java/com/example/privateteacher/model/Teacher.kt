@@ -11,7 +11,7 @@ data class Teacher(
     var major: String = "",
     var subject: String = "",
     var level: String = "",
-    var startTime: Int = 0,
-    var endTime: Int = 0,
+    var startTime: Long = 0,
+    var endTime: Long = 0,
     var phoneNumber: String = "",
 ) : Parcelable
