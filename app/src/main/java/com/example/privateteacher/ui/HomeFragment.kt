@@ -14,9 +14,12 @@ import com.google.firebase.firestore.*
 
 private const val TAG = "HomeFragment"
 class HomeFragment : Fragment() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var teacherList: ArrayList<Teacher>
-    private lateinit var myAdapter: MyAdapter
+    //
+//private lateinit var search: SearchView
+  //  private lateinit var myAdapter: MyAdapter
     private lateinit var db: FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,16 +30,35 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //FirebaseAuth.getInstance().currentUser?.email?.let { Log.e("userUID", it) }
 
+        //search=view.findViewById(R.id.search)
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
         teacherList = arrayListOf()
-        myAdapter = MyAdapter(teacherList)
-        recyclerView.adapter = myAdapter
+            recyclerView.adapter=myAdapter
+
         eventChangeListener()
+        //search view
+//        search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                myAdapter.filter.filter(newText)
+//                return false
+//            }
+//
+//        })
+
+
+
+
+
+
     }
+
 
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
@@ -52,14 +74,14 @@ class HomeFragment : Fragment() {
                 for (dc: DocumentChange in value?.documentChanges!!) {
                     if (dc.type == DocumentChange.Type.ADDED) {
                         val teacher = Teacher()
-                        val data = dc.document.data
+                      val data = dc.document.data
 //                        teacher.startTime = data["startTime"]
                        // Log.d(TAG, "onEvent: ${data["startTime"] as Long}")
                        // teacher.startTime = dc.document.getString("startTime")?.toInt()!!
                        teacherList.add(dc.document.toObject(Teacher::class.java))
                     }
                 }
-                myAdapter.notifyDataSetChanged()
+              myAdapter.notifyDataSetChanged()
             }
 
         })
