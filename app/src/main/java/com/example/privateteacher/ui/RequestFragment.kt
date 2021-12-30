@@ -36,7 +36,6 @@ class RequestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //FirebaseAuth.getInstance().currentUser?.email?.let { Log.e("userUID", it) }
 
         recyclerView = view.findViewById(R.id.recyclerRequest)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -50,23 +49,19 @@ class RequestFragment : Fragment() {
 
     fun cheakStudentOrTeacher(userID: String) = CoroutineScope(Dispatchers.IO).launch {
         //shared preference
-        lateinit var level: Spinner
-        lateinit var name: TextView
+       lateinit var level: Spinner
+       lateinit var name: TextView
           val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
-        /*    preference
-               .edit()
-               .putString(NAME, name.text.toString())
-               .putString(LEVEL, level.selectedItem.toString())
-               .apply()
-//   */
+
       try {
          val db = FirebaseFirestore.getInstance()
            db.collection("Teacher")
                .document("$userID")
                .get().addOnCompleteListener {
                    it
-                    if (it.result?.exists()!!) {
-                       requestTeacher()
+                    if (it.result?.exists()!!) {//    com.google.android.gms.tasks.RuntimeExecutionException: com.google.firebase.firestore.FirebaseFirestoreException: Failed to get document because the client is offline.
+
+                        requestTeacher()
                       preference.edit().putString(TYPE,TEACHER).apply()
                    } else {
                         requestStudent()
@@ -93,9 +88,12 @@ class RequestFragment : Fragment() {
                         return
                     }
                     for (dc: DocumentChange in value?.documentChanges!!) {
-                        if (dc.type == DocumentChange.Type.ADDED) {
+                        if (dc.type == DocumentChange.Type.ADDED ) {
                             requestList.add(dc.document.toObject(Request::class.java))
                             Log.e("Error","${requestList.size}")
+                            //send netification
+                            PrivateTeacherNotification().myNotification("your request is accepted")
+
                         }
                     }
                     myRequestAdapter.notifyDataSetChanged()
@@ -121,12 +119,28 @@ class RequestFragment : Fragment() {
                         Log.e("fireStore Error", error.message.toString())
                         return
                     }
+
                     for (dc: DocumentChange in value?.documentChanges!!) {
-                        if (dc.type == DocumentChange.Type.ADDED) {
+                        if (dc.type == DocumentChange.Type.ADDED ) {
                             requestList.add(dc.document.toObject(Request::class.java))
                             Log.e("Error","${requestList.size}")
+
+                            //send netification
+                            PrivateTeacherNotification().myNotification("you have new request")
+
+
+
+
+
+                        }
+                       else if ( dc.type == DocumentChange.Type.REMOVED) {
+                            requestList.add(dc.document.toObject(Request::class.java))
+                            Log.e("Error", "${requestList.size}")
+                            //send netification
+                            PrivateTeacherNotification().myNotification("your request is delete")
                         }
                     }
+
                     myRequestAdapter.notifyDataSetChanged()
 
 

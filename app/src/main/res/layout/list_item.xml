@@ -25,7 +25,7 @@
                 android:id="@+id/TeacherUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:  "
+                android:text="@string/name_with_dots"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="TeacherName"
+                android:text="@string/teachername"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subject:  "
+                android:text="@string/subject_with_dpts"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="teacher Subject"
+                android:text="@string/teacher_subject"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>

@@ -59,7 +59,7 @@ class UpdateTeacher : Fragment() {
     }
 
     fun updateTeacherInformation(field: String, value: Any) {
-     var type:String
+        var type:String
         if (!isTeacher){
             type="Student"
         }else{
@@ -280,19 +280,19 @@ class UpdateTeacher : Fragment() {
         }
 
 
-    /*    //student
-        if (name.text.toString() != studentName) {
-            studentName = name.text.toString()
-            updateStudent("name", studentName!!)
-            preference.edit().putString(NAME, studentName).apply()
-        }
-        val indexofPL = levelList.indexOf(pLevel)
-        level.setSelection(indexofPL)
-        if (level.selectedItem.toString() != studentLevel) {
-            updateStudent("level", pLevel!!)
-            preference.edit().putString(LEVEL, pLevel!!)
-        }
-*/
+        /*    //student
+            if (name.text.toString() != studentName) {
+                studentName = name.text.toString()
+                updateStudent("name", studentName!!)
+                preference.edit().putString(NAME, studentName).apply()
+            }
+            val indexofPL = levelList.indexOf(pLevel)
+            level.setSelection(indexofPL)
+            if (level.selectedItem.toString() != studentLevel) {
+                updateStudent("level", pLevel!!)
+                preference.edit().putString(LEVEL, pLevel!!)
+            }
+    */
 
         fun endTimePicker() {
             val cal = Calendar.getInstance()
@@ -326,7 +326,7 @@ class UpdateTeacher : Fragment() {
                     "name", name.toString(),
                     "subject", subject.toString(),
                     "level", level.toString(),
-                   "startTime", startTime.text.toString(),
+                    "startTime", startTime.text.toString(),
                     "endTime", endTime.text.toString().toInt(),
                     "phoneNumber", phoneNumber.toString().toInt(),
                     "major", major.toString()
@@ -339,12 +339,11 @@ class UpdateTeacher : Fragment() {
 
     /* private fun updateStudent(name:String,level:String) {
           upDateUserData.document(uId.toString())
-
               .update(
                   "name", name.toString(),
                   "level", level.toString(),
-
                   )
       }*/
 }
+
 

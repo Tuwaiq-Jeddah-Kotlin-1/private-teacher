@@ -4,20 +4,20 @@
 <item
     android:id="@+id/home_fragment"
     android:icon="@drawable/home"
-    android:title="Home"/>
+    android:title="@string/home"/>
     <item
         android:id="@+id/requestFragment"
         android:icon="@drawable/request"
-        android:title="request"/>
+        android:title="@string/request"/>
     <item
         android:id="@+id/upDate_Teatchr"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Profile"/>
+        android:title="@string/profile"/>
 
     <item
         android:id="@+id/settingFragment"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="setting"/>
+        android:title="@string/setting"/>
 
 
 </menu>

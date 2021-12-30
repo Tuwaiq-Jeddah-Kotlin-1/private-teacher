@@ -16,7 +16,7 @@
         android:gravity="center_horizontal"
         android:paddingTop="10dp"
         android:paddingBottom="20dp"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:paddingBottom="20dp"
-        android:text="Profile"
+        android:text="@string/profile"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
         android:layout_height="23dp"
         android:layout_marginTop="60dp"
 
-        android:text="Theme"
+        android:text="@string/theme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChangeLanguage" />
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:gravity="center_horizontal"
-        android:text="Sign Out"
+        android:text="@string/sign_out"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Change Language"
+        android:text="@string/change_language"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

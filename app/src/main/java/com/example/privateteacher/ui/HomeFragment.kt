@@ -73,17 +73,7 @@ class HomeFragment : Fragment() {
 
 
 
-//                for (dc: DocumentChange in value?.documentChanges!!) {
-//                    if (dc.type == DocumentChange.Type.ADDED) {
-//                        val teacher = Teacher()
-//                        val data = dc.document.data
-////                        teacher.startTime = data["startTime"]
-//                       // Log.d(TAG, "onEvent: ${data["startTime"] as Long}")
-//                       // teacher.startTime = dc.document.getString("startTime")?.toInt()!!
-//                       teacherList.add(dc.document.toObject(Teacher::class.java))
-//                    }
-//                }
-//                myAdapter.notifyDataSetChanged()
+
             }
 
         })

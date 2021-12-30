@@ -42,11 +42,8 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
         holder.subject.text = request.subject
         holder.timeval.text = request.timeVal.toString()
         holder.stateText.text = request.state
-holder.idRequest=request.idrequest
-        holder.deletRequst.setOnClickListener {
-            val deletRequest=db.collection("Request").document(request.idrequest).delete()
-            deletRequest
-        }
+        holder.idRequest=request.idrequest
+
        if (isTeacher){
            if(request.state == "Pending"){
                holder.acceptButton.visibility = View.VISIBLE
@@ -57,6 +54,7 @@ holder.idRequest=request.idrequest
                            it.addOnSuccessListener {
                                Log.e("adapter", "success")
                                changeColorState(holder,"accept")
+
                            }
                            it.addOnFailureListener {
                                Log.e("adapter ${request.idrequest}", it.message.toString())
@@ -77,12 +75,14 @@ holder.idRequest=request.idrequest
                        }
                    notifyDataSetChanged()
                }
+
            }else{
                holder.acceptButton.visibility = View.GONE
 
                holder.rejectButton.visibility = View.GONE
                changeColorState(holder,request.state)
            }
+
        }else{
 
            holder.deletRequst.visibility=View.VISIBLE
@@ -90,13 +90,19 @@ holder.idRequest=request.idrequest
            holder.rejectButton.visibility = View.GONE
            changeColorState(holder,request.state)
        }
-
+        holder.deletRequst.setOnClickListener {
+            val deletRequest=db.collection("Request").document(request.idrequest).delete()
+            requestList.removeAt(position)
+            notifyDataSetChanged()
+        }
+        //notifyDataSetChanged()
     }
 
     fun changeColorState(holder: MyHolder, state:String){
         holder.acceptButton.visibility = View.GONE
         holder.rejectButton.visibility = View.GONE
         if (state == "accept"){
+
             val unwrappedDrawable: Drawable = holder.state.getBackground()
             val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable)
             DrawableCompat.setTint(wrappedDrawable, Color.GREEN)
