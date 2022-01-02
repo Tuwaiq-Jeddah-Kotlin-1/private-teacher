@@ -74,6 +74,7 @@ class RequestFragment : Fragment() {
             }
         }
     }
+
     private fun requestStudent() {
         var uid = FirebaseAuth.getInstance().currentUser?.uid
         db = FirebaseFirestore.getInstance()
@@ -92,8 +93,24 @@ class RequestFragment : Fragment() {
                             requestList.add(dc.document.toObject(Request::class.java))
                             Log.e("Error","${requestList.size}")
                             //send netification
-                            PrivateTeacherNotification().myNotification("your request is accepted")
+                            //PrivateTeacherNotification().myNotification("your request is accepted")
 
+                        }else if ( dc.type == DocumentChange.Type.MODIFIED) {
+                            val currentState=dc.document.get("state").toString()
+                            if (currentState== "accept"){
+                                requestList?.find { it.idrequest ==dc.document.get("idrequest").toString()  }?.state = currentState
+                                Log.e("Error", "${requestList.size}")
+                                //send netification
+                                PrivateTeacherNotification().myNotification("your request is accept")
+
+                            }else{
+                                requestList?.find { it.idrequest ==dc.document.get("idrequest").toString()  }?.state = currentState
+
+                                Log.e("Error", "${requestList.size}")
+                                //send netification
+                                PrivateTeacherNotification().myNotification("your request is reject")
+
+                            }
                         }
                     }
                     myRequestAdapter.notifyDataSetChanged()
@@ -104,6 +121,7 @@ class RequestFragment : Fragment() {
             })
 
     }
+
     private fun requestTeacher() {
         var uid = FirebaseAuth.getInstance().currentUser?.uid
         db = FirebaseFirestore.getInstance()
@@ -129,12 +147,9 @@ class RequestFragment : Fragment() {
                             PrivateTeacherNotification().myNotification("you have new request")
 
 
-
-
-
                         }
-                       else if ( dc.type == DocumentChange.Type.REMOVED) {
-                            requestList.add(dc.document.toObject(Request::class.java))
+                        if ( dc.type == DocumentChange.Type.REMOVED) {
+                            requestList.remove(dc.document.toObject(Request::class.java))
                             Log.e("Error", "${requestList.size}")
                             //send netification
                             PrivateTeacherNotification().myNotification("your request is delete")

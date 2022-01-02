@@ -60,6 +60,7 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
                                Log.e("adapter ${request.idrequest}", it.message.toString())
                            }
                        }
+                   request.state ="accept"
                    notifyDataSetChanged()
                }
                holder.rejectButton.setOnClickListener {
@@ -73,6 +74,7 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
                                Log.e("adapter ${request.idrequest}", it.message.toString())
                            }
                        }
+                   request.state ="reject"
                    notifyDataSetChanged()
                }
 
