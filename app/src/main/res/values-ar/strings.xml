@@ -1,0 +1,78 @@
+<resources>
+    <string name="top_icon">TOP ICON</string>
+    <string name="email">ايميل</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="forgot_password">نسيت كلمة المرور ؟</string>
+    <string name="google_icon">google icon</string>
+    <string name="facebook_icon">facebook icon</string>
+    <string name="new_user_register_now">حساب جديد؟</string>
+    <string name="name" >الاسم</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Subject">
+        <item>رياضيات</item>
+        <item>القراءن الكريم و تجويده</item>
+        <item>دراسات اسلاميه</item>
+        <item>دراسات اجتماعيه</item>
+        <item>عربي</item>
+        <item>لغه انجليزيه</item>
+        <item>علوم</item>
+        <item>احياء</item>
+        <item>فيزياء</item>
+        <item>التقنيه الرقميه</item>
+    </string-array>
+
+
+    <string-array name="Level">
+        <item>ابتدائي </item>
+        <item>متوسط</item>
+        <item>ثانوي</item>
+    </string-array>
+    <string name="password">كلمة المرور</string>
+    <string name="or">او</string>
+    <string name="remember_me">تذكرني</string>
+    <string name="already_have_an_account">هل لديك حساب</string>
+    <string name="new_student_register_now">تسجيل طالب جديد</string>
+    <string name="here_s_your_first_step_with_us">اول خطوه لك معنا</string>
+    <string name="enter_your_major">التخصص</string>
+    <string name="subject">الماده</string>
+    <string name="start_time">وقت البدايه</string>
+    <string name="end_time">وقت النهايه</string>
+    <string name="your_number">وقت الجوال</string>
+    <string name="level">مستوى</string>
+    <string name="already_member_login">عضو من قبل سجل دخول</string>
+    <string name="request_session">طلب جلسه</string>
+    <string name="end_time_with_dots">نهاية الوقت</string>
+    <string name="end_time_with_dot">نهاية الوقت</string>
+    <string name="teachername">اسم الاستاذ</string>
+    <string name="subject_with_dot">الماده</string>
+    <string name="teacher_subject">اسم الاستاذ</string>
+    <string name="major_with_dot">تخصص</string>
+    <string name="major">تخصص</string>
+    <string name="start_time_with_dot">بداية الوقت</string>
+    <string name="start_time_">وقت البدايه</string>
+    <string name="app_name">مدرسين خصوصين</string>
+    <string name="settings">الاعدادات</string>
+    <string name="update">تحديث</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="accept">قبول</string>
+    <string name="reject">رفض</string>
+    <string name="time">الوقت</string>
+    <string name="reservedtime_with_dots">وقت الاستلام</string>
+    <string name="subject_with_dots">الماده</string>
+    <string name="studentname">اسم الطالب</string>
+    <string name="subject_with_dpts">الماده</string>
+    <string name="signup">تسجيل جديد</string>
+    <string name="sign_up">تسجيل جديد</string>
+    <string name="sign_out">تسجيل خروج</string>
+    <string name="change_language">تغير اللغه</string>
+    <string name="name_with_dots">الاسم</string>
+    <string name="profile">معلومات شخصيه</string>
+    <string name="theme">المظهر</string>
+    <string name="request">طلب</string>
+    <string name="cancel">الغاء</string>
+    <string name="choose_time">اختر الوقت</string>
+    <string name="home">الصفحه الرئيسيه</string>
+    <string name="setting">الاعدادات</string>
+    <string name="textLevel">مستوى</string>
+</resources>

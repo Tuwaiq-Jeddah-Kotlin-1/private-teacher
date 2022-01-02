@@ -25,7 +25,7 @@
                 android:id="@+id/TeacherUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:  "
+                android:text="@string/name_with_dots"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="StudentName"
+                android:text="@string/studentname"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subject:  "
+                android:text="@string/subject_with_dots"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="teacher Subject"
+                android:text="@string/teacher_subject"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -72,17 +72,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ReservedTime:  "
+                android:text="@string/reservedtime_with_dots"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/major"
+                android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="time"
+                android:text="@string/time"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
@@ -95,26 +95,39 @@
             android:orientation="horizontal">
             <Button
                 android:layout_width="match_parent"
-                android:id="@+id/btn1"
+                android:id="@+id/acceptBtn"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="accept"
+                android:text="@string/accept"
                 android:textSize="15dp"/>
 
             <Button
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
-                android:id="@+id/btn2"
+                android:id="@+id/rejectBtn"
                 android:layout_height="wrap_content"
-                android:text="refuse"
+                android:text="@string/reject"
                 android:textColor="@android:color/white"
                 android:textSize="15dp" />
+
             <TextView
                 android:id="@+id/circle_image"
-                android:background="@drawable/circle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/circle" />
 
+            <TextView
+                android:id="@+id/stateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 />
+
+            <ImageView
+                android:id="@+id/deletRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_delete_24"
+                android:visibility="gone" />
 
         </LinearLayout>
 

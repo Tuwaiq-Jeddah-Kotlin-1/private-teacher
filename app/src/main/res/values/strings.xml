@@ -9,8 +9,72 @@
     <string name="google_icon">google icon</string>
     <string name="facebook_icon">facebook icon</string>
     <string name="new_user_register_now">New User? Register Now</string>
-    <string name="name" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="remember_me">remember_me</string>
+    <string name="already_have_an_account">Already Have an Account?</string>
+    <string name="new_student_register_now">new_student_register_now</string>
+    <string name="here_s_your_first_step_with_us">Here`s your first step with us</string>
+    <string name="name">name</string>
+    <string name="enter_your_major">enter your major</string>
+    <string name="subject">subject</string>
+    <string name="start_time">start time</string>
+    <string name="end_time">end time</string>
+    <string name="your_number">your number</string>
+    <string name="sign_up">sign up</string>
+    <string name="level">level</string>
+    <string name="signup">signup</string>
+    <string name="subject_with_dpts">Subject:</string>
 
+    <string name="studentname">StudentName</string>
+    <string name="subject_with_dots">Subject:</string>
+    <string name="reservedtime_with_dots">ReservedTime:</string>
+    <string name="time">time</string>
+    <string name="accept">accept</string>
+    <string name="reject">reject</string>
+    <string name="profile">Profile</string>
+    <string name="username">Username</string>
+
+    <string name="update">update</string>
+    <string name="settings">Settings</string>
+    <string name="change_language">Change Language</string>
+    <string name="theme">Theme</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="name_with_dots">Name:</string>
+    <string name="teachername">TeacherName</string>
+    <string name="subject_with_dot">Subject:</string>
+    <string name="teacher_subject">teacher Subject</string>
+    <string name="major_with_dot">major:</string>
+    <string name="major">major</string>
+    <string name="start_time_with_dot">Start Time:</string>
+    <string name="start_time_">start Time</string>
+    <string name="end_time_with_dot">End Time:</string>
+    <string name="end_time_with_dots">end Time</string>
+    <string name="request">Request</string>
+    <string name="cancel">Cancel</string>
+    <string name="request_session">request session</string>
+    <string name="already_member_login">Already member login</string>
+    <string name="choose_time">Choose time</string>
+    <string name="home">Home</string>
+    <string name="setting">setting</string>
+    <string-array name="Subject">
+        <item>Math</item>
+        <item>The holy Quran and its recitation</item>
+        <item>Islamic studies</item>
+        <item>Social studies</item>
+        <item>Arabic</item>
+        <item>English</item>
+        <item>Science</item>
+        <item>Biology</item>
+        <item>physics</item>
+        <item>digital technology</item>
+
+
+    </string-array>
+    <string name="textLevel">Level</string>
+    <string-array name="Level">
+    <item>primary</item>
+    <item>middle</item>
+    <item>high</item>
+    </string-array>
 </resources>

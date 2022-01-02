@@ -66,7 +66,7 @@
         android:background="@drawable/round_border"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/name"
         android:inputType="textEmailAddress"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,79 +122,65 @@
         android:background="@drawable/round_border"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="enter your major"
+        android:hint="@string/enter_your_major"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teacherPassword" />
 
-        <EditText
-            android:id="@+id/subject"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_border"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:hint="enter subject you want to teach"
-            android:padding="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/major" />
+        <Spinner
 
-        <EditText
-            android:id="@+id/level"
-            android:layout_width="0dp"
+            android:id="@+id/subject"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:hint="enter level you want to teach"
             android:padding="16dp"
+            android:ems="10"
+            android:hint="@string/subject"
+            android:entries="@array/Subject"
+            android:spinnerMode="dropdown"
+            tools:layout_editor_absoluteX="92dp"
+            tools:layout_editor_absoluteY="447dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subject" />
+            app:layout_constraintTop_toBottomOf="@+id/major" />
 
         <TextView
             android:id="@+id/startTime"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="start time"
+            android:hint="@string/start_time"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.036"
+            app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level" />
+            app:layout_constraintTop_toBottomOf="@+id/subject" />
 
         <TextView
             android:id="@+id/endTime"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="end time"
+            android:hint="@string/end_time"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.767"
+            app:layout_constraintStart_toEndOf="@+id/startTime"
             app:layout_constraintTop_toBottomOf="@+id/level" />
 
         <ImageButton
@@ -222,22 +208,22 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-        android:id="@+id/phoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_border"
-        android:drawablePadding="16dp"
-        android:ems="10"
-        android:hint="your number"
-        android:inputType="number"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endTime" />
+            android:id="@+id/phoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="@string/your_number"
+            android:inputType="number"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/endTime" />
 
         <TextView
             android:id="@+id/alreadyTeacherMember"
@@ -245,7 +231,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:text="already member?login"
+            android:text="@string/already_member_login"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -258,12 +244,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/alreadyTeacherMember"
-            android:text="sign up"
+            android:text="@string/sign_up"
             android:textColor="#E1E9ED"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/level"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border"
+            android:padding="16dp"
+            android:ems="10"
+            android:text="@string/level"
+            android:entries="@array/Level"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toEndOf="@+id/subject"
+            app:layout_constraintTop_toBottomOf="@+id/major" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

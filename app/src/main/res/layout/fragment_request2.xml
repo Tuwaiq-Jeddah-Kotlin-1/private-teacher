@@ -3,16 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeFragment">
+    tools:context=".ui.RequestFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_marginTop="40dp"
+        android:id="@+id/recyclerRequest"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </FrameLayout>

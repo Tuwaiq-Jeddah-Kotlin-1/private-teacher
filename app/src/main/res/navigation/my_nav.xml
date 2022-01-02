@@ -17,6 +17,12 @@
         <action
             android:id="@+id/action_login_to_signupStudent"
             app:destination="@id/signupStudent" />
+        <action
+            android:id="@+id/action_login_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_login_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupTeacher"
@@ -25,20 +31,14 @@
         tools:layout=""
         >
         <action
-            android:id="@+id/action_signupTeacher_to_home_fragment"
-            app:destination="@id/home_fragment" />
-        <action
-            android:id="@+id/action_signupTeacher_to_home_fragment2"
-            app:destination="@id/home_fragment" />
+            android:id="@+id/action_signupTeacher_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.example.privateteacher.ui.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
-        <action
-            android:id="@+id/action_home_fragment_to_signupStudent"
-            app:destination="@id/signupStudent" />
         <action
             android:id="@+id/action_home_fragment_to_requestFragment"
             app:destination="@id/requestFragment" />
@@ -50,12 +50,18 @@
         android:id="@+id/settingFragment"
         android:name="com.example.privateteacher.ui.SettingFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_login"
+            app:destination="@id/login"
+            app:popUpTo="@id/my_nav"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/requestFragment"
         android:name="com.example.privateteacher.ui.RequestFragment"
         android:label="fragment_serach"
-        tools:layout="@layout/fragment_request" >
+        tools:layout="@layout/item_request" >
         <action
             android:id="@+id/action_serachFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
@@ -64,7 +70,11 @@
         android:id="@+id/signupStudent"
         android:name="com.example.privateteacher.ui.SignupStudent"
         android:label="sign_up_student"
-        tools:layout="@layout/sign_up_student" />
+        tools:layout="@layout/sign_up_student" >
+        <action
+            android:id="@+id/action_signupStudent_to_home_fragment"
+            app:destination="@id/home_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.privateteacher.ui.DetailFragment"
@@ -73,5 +83,13 @@
         <argument
             android:name="teacherKeyArg"
             app:argType="com.example.privateteacher.model.Teacher" />
+        <action
+            android:id="@+id/action_detailFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/upDate_Teatchr"
+        android:name="com.example.privateteacher.UpdateTeacher"
+        android:label="fragment_up_date__teatchr"
+        tools:layout="@layout/fragment_up_date__teatchr" />
 </navigation>

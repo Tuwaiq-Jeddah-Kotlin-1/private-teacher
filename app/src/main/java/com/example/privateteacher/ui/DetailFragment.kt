@@ -19,8 +19,13 @@ import com.example.privateteacher.ViewModel
 import com.example.privateteacher.model.Request
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+//const val TOPIC="/topic/myTopic"
 class DetailFragment : Fragment() {
+    //
+
+    val TAG="DetailFragment"
 
     private lateinit var name: TextView
     private lateinit var subject: TextView
@@ -63,6 +68,9 @@ class DetailFragment : Fragment() {
         spinner = view.findViewById(R.id.from)
 
 
+
+
+
         name.text = receivedData.name
         teacherUid = receivedData.teacherId
         subject.text = receivedData.subject
@@ -85,13 +93,12 @@ class DetailFragment : Fragment() {
 
         scheduleBtn.setOnClickListener {
 
-            //Toast.makeText(requireContext(),timeVal.toString(),Toast.LENGTH_SHORT).show()
-            //do request
+
 
 
             val dialog = AlertDialog.Builder(requireContext())//.setView(R.layout.spinner_dialog)
             val viewSpinner = layoutInflater.inflate(R.layout.spinner_dialog, null)
-            dialog.setTitle("choose time")
+            dialog.setTitle(R.string.choose_time)
 
 
             val timeSpinner = viewSpinner.findViewById<Spinner>(R.id.dialog_spinner)
@@ -105,7 +112,8 @@ class DetailFragment : Fragment() {
             spinner.adapter = dataAdapter
             timeSpinner.adapter = dataAdapter
             dialog.setPositiveButton(
-                "Request",
+                R.string.request,
+
                 DialogInterface.OnClickListener { dialogInterface, i ->
                     timeVal = spinner.selectedItem.toString().toInt()
 
@@ -117,9 +125,11 @@ class DetailFragment : Fragment() {
                         refAuth.currentUser!!.uid
 
                     )
-                })
+                }
+
+            )
             dialog.setNegativeButton(
-                "Cancel",
+                R.string.cancel,
                 DialogInterface.OnClickListener { dialogInterface, i ->
 
                 })
@@ -157,13 +167,22 @@ class DetailFragment : Fragment() {
             teacherUid = teacherUid,
             studentUid = studentUid,
         )
+
+        val current = LocalDateTime.now()
+
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+        val formatted = current.format(formatter)
+        val studentId=FirebaseAuth.getInstance().currentUser?.uid
+        request.idrequest="${studentUid}${formatted}"
         saveUserFireStore(request)
 
     }
 
     private fun saveUserFireStore(request: Request) {
         try {
-            db.collection("Request").add(request).addOnSuccessListener {
+
+            db.collection("Request").document(request.idrequest).set(request).addOnSuccessListener {
 
 
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
@@ -175,5 +194,6 @@ class DetailFragment : Fragment() {
 
         }
     }
+
 }
 

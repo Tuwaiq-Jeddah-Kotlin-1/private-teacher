@@ -25,7 +25,7 @@
                 android:id="@+id/TeacherUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:  "
+                android:text="@string/name_with_dots"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="TeacherName"
+                android:text="@string/teachername"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subject:  "
+                android:text="@string/subject_with_dot"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="teacher Subject"
+                android:text="@string/teacher_subject"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -72,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="major:  "
+                android:text="@string/major_with_dot"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="major"
+                android:text="@string/major"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Time:  "
+                android:text="@string/start_time_with_dot"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="start Time"
+                android:text="@string/start_time_"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -120,7 +120,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End Time:  "
+                android:text="@string/end_time_with_dot"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="end Time"
+                android:text="@string/end_time_with_dots"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -158,7 +158,7 @@
                 android:id="@+id/schedulebtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="request session"
+                android:text="@string/request_session"
                 android:textColor="@color/design_default_color_background"
                 android:textSize="10sp"
                 android:textStyle="bold"

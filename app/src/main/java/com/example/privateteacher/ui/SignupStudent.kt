@@ -1,15 +1,13 @@
 package com.example.privateteacher.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.privateteacher.R
@@ -24,6 +22,7 @@ class SignupStudent : Fragment() {
     private lateinit var name: EditText
     private lateinit var emaile: EditText
     private lateinit var password: EditText
+    private lateinit var level:Spinner
     private lateinit var alreadyMember: TextView
     private lateinit var signupBtn: Button
     private var db = FirebaseFirestore.getInstance()
@@ -47,6 +46,7 @@ class SignupStudent : Fragment() {
         name = view.findViewById(R.id.studentName)
         emaile = view.findViewById(R.id.teacherEmail)
         password = view.findViewById(R.id.teacherPassword)
+        level=view.findViewById(R.id.level)
         alreadyMember = view.findViewById(R.id.alreadyTeacherMember)
         // have account
         alreadyMember.setOnClickListener {
@@ -90,7 +90,8 @@ class SignupStudent : Fragment() {
                             // here the authentacition sucessed + generate UID
                             saveData(
                                 name.text.toString(),
-                                emaile.text.toString()
+                                emaile.text.toString(),
+                                level.selectedItem.toString()
                             )
 
                         } else {
@@ -108,8 +109,11 @@ class SignupStudent : Fragment() {
         }
     }
 
-    private fun saveData(name: String, emaile: String) {
-        val student = Student(name = name, email = emaile)
+    private fun saveData(name: String, emaile: String,level:String) {
+        val student = Student(name = name, email = emaile,level=level)
+        val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
+        preference.edit().putString(NAME, name).putString(LEVEL, level).apply()
+
         saveUserFireStore(student)
 
     }
@@ -119,6 +123,10 @@ class SignupStudent : Fragment() {
         try {
             db.collection("Student").document("$uid").set(student).addOnSuccessListener {
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
+
+
+
+
                 findNavController().navigate(R.id.home_fragment)
             }
 
@@ -129,6 +137,4 @@ class SignupStudent : Fragment() {
             //  }
         }
     }
-
-
 }
