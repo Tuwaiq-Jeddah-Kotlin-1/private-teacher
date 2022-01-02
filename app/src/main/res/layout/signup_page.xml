@@ -15,11 +15,21 @@
         android:id="@+id/topView"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/pige"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/top_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/capb" />
 
     <View
         android:id="@+id/view5"
@@ -30,23 +40,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topView" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person"
-        android:contentDescription="@string/top_icon" />
-
     <TextView
         android:id="@+id/topText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
+        android:fontFamily="@font/bitter"
         android:text="Here`s your first step with us"
         android:textColor="@android:color/white"
         android:textSize="30sp"
@@ -185,9 +185,9 @@
 
         <ImageButton
             android:id="@+id/startIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_time"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_time"
             app:layout_constraintBottom_toBottomOf="@+id/startTime"
             app:layout_constraintEnd_toEndOf="@+id/startTime"
             app:layout_constraintHorizontal_bias="0.931"
@@ -197,9 +197,9 @@
 
         <ImageButton
             android:id="@+id/endIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_time"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_time"
             app:layout_constraintBottom_toBottomOf="@+id/endTime"
             app:layout_constraintEnd_toEndOf="@+id/endTime"
             app:layout_constraintHorizontal_bias="0.931"
@@ -212,7 +212,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border"
             android:drawablePadding="16dp"
@@ -226,15 +226,17 @@
             app:layout_constraintTop_toBottomOf="@+id/endTime" />
 
         <TextView
+            android:fontFamily="@font/bitter"
             android:id="@+id/alreadyTeacherMember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:text="@string/already_member_login"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/myblue"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/phoneNumber" />
@@ -243,13 +245,16 @@
             android:id="@+id/btnSingUpTeacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/alreadyTeacherMember"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_border"
+            android:fontFamily="@font/bitter"
             android:text="@string/sign_up"
             android:textColor="#E1E9ED"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alreadyTeacherMember" />
 
         <Spinner
             android:id="@+id/level"

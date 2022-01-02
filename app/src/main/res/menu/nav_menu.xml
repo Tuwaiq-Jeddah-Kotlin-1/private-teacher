@@ -11,7 +11,7 @@
         android:title="@string/request"/>
     <item
         android:id="@+id/upDate_Teatchr"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_person"
         android:title="@string/profile"/>
 
     <item
