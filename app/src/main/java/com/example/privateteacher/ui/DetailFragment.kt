@@ -101,6 +101,7 @@ class DetailFragment : Fragment() {
             dialog.setTitle(R.string.choose_time)
 
 
+
             val timeSpinner = viewSpinner.findViewById<Spinner>(R.id.dialog_spinner)
 
             val dataAdapter: ArrayAdapter<Int> = ArrayAdapter<Int>(
@@ -112,7 +113,8 @@ class DetailFragment : Fragment() {
             spinner.adapter = dataAdapter
             timeSpinner.adapter = dataAdapter
             dialog.setPositiveButton(
-                R.string.request,
+                R.string.request
+                ,
 
                 DialogInterface.OnClickListener { dialogInterface, i ->
                     timeVal = spinner.selectedItem.toString().toInt()

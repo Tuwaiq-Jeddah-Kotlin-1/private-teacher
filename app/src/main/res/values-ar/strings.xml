@@ -38,7 +38,7 @@
     <string name="subject">الماده</string>
     <string name="start_time">وقت البدايه</string>
     <string name="end_time">وقت النهايه</string>
-    <string name="your_number">وقت الجوال</string>
+    <string name="your_number">رقم الجوال</string>
     <string name="level">مستوى</string>
     <string name="already_member_login">عضو من قبل سجل دخول</string>
     <string name="request_session">طلب جلسه</string>
@@ -58,7 +58,7 @@
     <string name="accept">قبول</string>
     <string name="reject">رفض</string>
     <string name="time">الوقت</string>
-    <string name="reservedtime_with_dots">وقت الاستلام</string>
+    <string name="reservedtime_with_dots">وقت الحجز</string>
     <string name="subject_with_dots">الماده</string>
     <string name="studentname">اسم الطالب</string>
     <string name="subject_with_dpts">الماده</string>
@@ -75,4 +75,5 @@
     <string name="home">الصفحه الرئيسيه</string>
     <string name="setting">الاعدادات</string>
     <string name="textLevel">مستوى</string>
+    <string name="new_teacher_register_now">تسجيل معلم جديد</string>
 </resources>

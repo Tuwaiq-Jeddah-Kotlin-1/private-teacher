@@ -11,9 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="351dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/pige"
         app:layout_constraintBottom_toTopOf="@+id/gotoStudentRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,21 +29,22 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/top_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person" />
+        app:srcCompat="@drawable/capb" />
 
     <TextView
         android:id="@+id/topText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/bitter"
         android:text="@string/already_have_an_account"
         android:textColor="@android:color/white"
         android:textSize="30sp"
@@ -94,6 +96,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
+        app:fontFamily="@font/bitter"
         android:background="@drawable/round_border"
         android:text="@string/login"
         android:textColor="@color/design_default_color_background"
@@ -105,12 +108,13 @@
         app:layout_constraintTop_toBottomOf="@+id/teacherPassword" />
 
     <CheckBox
+        app:fontFamily="@font/bitter"
         android:id="@+id/check_rem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="200dp"
         android:text="@string/remember_me"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/myblue"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,13 +128,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="41dp"
-        android:text="new_teacher_register_now"
-        android:textColor="@color/colorPrimary"
+        android:text="@string/new_teacher_register_now"
+        android:textColor="@color/myblue"
         android:textSize="10sp"
         android:textStyle="bold"
+        app:fontFamily="@font/bitter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gotoStudentRegister" />
 
@@ -142,11 +147,13 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="13dp"
         android:text="@string/new_student_register_now"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/myblue"
         android:textSize="10sp"
         android:textStyle="bold"
+        app:fontFamily="@font/bitter"
         app:layout_constraintBottom_toTopOf="@+id/gotoTeacherRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topView" />
 

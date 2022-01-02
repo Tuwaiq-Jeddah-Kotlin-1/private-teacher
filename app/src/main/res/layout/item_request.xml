@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_with_dots"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/studentname"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/subject_with_dots"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/teacher_subject"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
         <LinearLayout
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/reservedtime_with_dots"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/time"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
 
 
@@ -94,20 +94,22 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <Button
+                android:background="@drawable/round_border"
                 android:layout_width="match_parent"
                 android:id="@+id/acceptBtn"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
+                android:textColor="@color/white"
                 android:text="@string/accept"
                 android:textSize="15dp"/>
 
             <Button
+                android:background="@drawable/round_border"
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
                 android:id="@+id/rejectBtn"
                 android:layout_height="wrap_content"
                 android:text="@string/reject"
-                android:textColor="@android:color/white"
+                android:textColor="@color/white"
                 android:textSize="15dp" />
 
             <TextView

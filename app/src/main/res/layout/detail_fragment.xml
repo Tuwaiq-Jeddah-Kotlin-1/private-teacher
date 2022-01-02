@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_with_dots"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/teachername"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/subject_with_dot"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/teacher_subject"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
         <LinearLayout
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/major_with_dot"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/major"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/start_time_with_dot"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -106,22 +106,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="@string/start_time_"
-                android:textColor="@color/colorPrimary"
+                android:text="start"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/end_time_with_dot"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -130,17 +122,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="@string/end_time_with_dots"
-                android:textColor="@color/colorPrimary"
+                android:text="end"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/end_time_with_dot"-->
+<!--                android:textColor="@color/myblue"-->
+<!--                android:textSize="26sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/endTime"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:text="@string/end_time_with_dots"-->
+<!--                android:textColor="@color/myblue"-->
+<!--                android:textSize="20sp" />-->
+<!--        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
 
             <ImageButton
 
@@ -155,6 +170,7 @@
                 android:layout_width="80dp"
                android:layout_height="wrap_content" />
             <Button
+                android:background="@drawable/round_border"
                 android:id="@+id/schedulebtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

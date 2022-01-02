@@ -57,6 +57,7 @@
     <string name="choose_time">Choose time</string>
     <string name="home">Home</string>
     <string name="setting">setting</string>
+    <string name="new_teacher_register_now">new_teacher_register_now</string>
     <string-array name="Subject">
         <item>Math</item>
         <item>The holy Quran and its recitation</item>
@@ -73,8 +74,8 @@
     </string-array>
     <string name="textLevel">Level</string>
     <string-array name="Level">
-    <item>primary</item>
-    <item>middle</item>
-    <item>high</item>
+        <item>primary</item>
+        <item>middle</item>
+        <item>high</item>
     </string-array>
 </resources>

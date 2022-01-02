@@ -22,21 +22,23 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/bitter"
                 android:id="@+id/TeacherUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_with_dots"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="@font/bitter"
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/teachername"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -47,20 +49,22 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/bitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/subject_with_dpts"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="@font/bitter"
                 android:id="@+id/subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/teacher_subject"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/myblue"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
