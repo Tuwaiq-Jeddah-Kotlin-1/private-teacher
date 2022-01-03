@@ -1,5 +1,6 @@
 package com.example.privateteacher.ui
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -14,13 +15,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.privateteacher.MainActivity
 import com.example.privateteacher.R
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 class SettingFragment : Fragment() {
-lateinit var signOut:TextView
+    lateinit var signOut: TextView
     private lateinit var preferences: SharedPreferences
-private lateinit var changelanguage:TextView
+    private lateinit var changelanguage: TextView
+    private lateinit var languageToggleButton: MaterialButtonToggleGroup
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,11 +34,13 @@ private lateinit var changelanguage:TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        signOut= view.findViewById(R.id.signOut)
+        languageToggleButton = view.findViewById(R.id.LanguageToggleButton)
+        signOut = view.findViewById(R.id.signOut)
         preferences = requireContext().getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
-        changelanguage=view.findViewById(R.id.tvChangeLanguage)
+        changelanguage = view.findViewById(R.id.tvChangeLanguage)
         signOut.setOnClickListener {
-            preferences = this.requireActivity().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+            preferences =
+                this.requireActivity().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
             val emailPref = preferences.getString("EMAIL", "")
             val passwordPref = preferences.getString("PASSWORD", "")
             val editor: SharedPreferences.Editor = preferences.edit()
@@ -48,80 +53,71 @@ private lateinit var changelanguage:TextView
 
         }
 
-changelanguage.setOnClickListener {
-    showChangeLanguage()
-}
-    }
+//        changelanguage.setOnClickListener {
+//            showChangeLanguage()
+//        }
+        languageToggleButton.addOnButtonCheckedListener { ToggleButtonGroup, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.arabicBtn -> activity?.let {
+                        preferences.edit().putString("LOCALE", "ar").apply()
+                        setLocate(it, "ar")
+                    }
+                    R.id.englishBtn -> activity?.let {
+                        preferences.edit().putString("LOCALE", "en").apply()
+                        setLocate(it, "en")
+                    }
+                }
 
-
-
-    private fun setLocaleKoala(localeName: String) {
-
-        val locale = Locale(localeName.toString())
-
-        Locale.setDefault(locale)
-
-        val config = Configuration()
-
-        config.locale = locale
-
-        //---------------------------------------------------------------
-        context?.resources?.updateConfiguration(config, requireContext().resources.displayMetrics)
-
-
-        preferences = this.requireActivity().getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
-
-        val editor: SharedPreferences.Editor = preferences.edit()
-        editor.putString("language", "${locale.toString()}")
-        editor.apply()
-
-
-        val refresh = Intent(context, MainActivity::class.java)
-        //    refresh.putExtra("currentLang", localeName)
-        startActivity(refresh)
-    }
-
-    private fun showChangeLanguage(){
-
-        val listItmes = arrayOf("عربي","English")
-
-
-        val mBuilder = AlertDialog.Builder(this.requireContext())
-
-        mBuilder.setTitle("Choose Language")
-
-        mBuilder.setSingleChoiceItems(listItmes,-1){
-                dialog, which ->
-            if (which ==0){
-
-                //setLocate("ar")
-                setLocaleKoala("ar")
-
-            }else if (which==1){
-
-                setLocaleKoala("en")
 
             }
+        }
+    }
+    fun setLocate(activity: Activity, Lang: String) {
+        val locale = Locale(Lang)
+        Locale.setDefault(locale)
+        val resources = activity.resources
+        val config: Configuration = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+        startActivity(Intent(activity, MainActivity::class.java))
+        activity.finish()
 
-            dialog.dismiss()
+    }
+
+
+
+//            fun showChangeLanguage() {
+//
+//                val listItmes = arrayOf("عربي", "English")
+//
+//
+//                val mBuilder = AlertDialog.Builder(this.requireContext())
+//
+//                mBuilder.setTitle("Choose Language")
+//
+//                mBuilder.setSingleChoiceItems(listItmes, -1) { dialog, which ->
+//                    if (which == 0) {
+//
+//                        //setLocate("ar")
+//                        setLocal("ar")
+//
+//                    } else if (which == 1) {
+//
+//                        setLocal("en")
+//
+//                    }
+//
+//                    dialog.dismiss()
+//
+//
+//                }
+//                val mDialog = mBuilder.create()
+//
+//                mDialog.show()
+//
+//
+//            }
 
 
         }
-        val mDialog =mBuilder.create()
-
-        mDialog.show()
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-}

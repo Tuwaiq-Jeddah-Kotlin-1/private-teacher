@@ -193,90 +193,93 @@ class UpdateTeacher : Fragment() {
                 pName = name.text.toString()
                 //update in database
                 updateTeacherInformation("name", pName!!)
-
                 //update in shared prefernce
                 preference.edit().putString(NAME, pName).apply()
             }
-            if (subject.selectedItem.toString() != pSubject) {
-                pSubject = subject.selectedItem.toString()
-                updateTeacherInformation("subject", pSubject!!)
 
-                preference.edit().putString(SUBJECT, pSubject).apply()
-
-            }
-            if (statTime.text.toString() != pSTime.toString()) {
-                if (timeEnd <= timeStart) {
-                    Toast.makeText(
-                        requireContext(),
-                        "end time must be bigger than start time",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-
-                    Log.e("sTime", "${statTime.text.toString()} GDFGFG")
-                    pSTime = statTime.text.toString().toInt()
-                    updateTeacherInformation("startTime", pSTime)
-                    preference.edit().putInt(START_TIME, pSTime!!.toInt()).apply()
+                if (level.selectedItem.toString() != pLevel) {
+                    // pLevel = level.text.toString()
+                    updateTeacherInformation("level", pLevel!!)
+                    preference.edit().putString(LEVEL, pLevel).apply()
                 }
+if (isTeacher) {
+    if (subject.selectedItem.toString() != pSubject) {
+        pSubject = subject.selectedItem.toString()
+        updateTeacherInformation("subject", pSubject!!)
 
-            }
-            if (endTime.text.toString() != pETime.toString()) {
-                if (timeEnd <= timeStart) {
-                    Toast.makeText(
-                        requireContext(),
-                        "end time must be bigger than start time",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
+        preference.edit().putString(SUBJECT, pSubject).apply()
 
-                    pETime = endTime.text.toString().toInt()
-                    updateTeacherInformation("endTime", pETime)
+    }
+    if (statTime.text.toString() != pSTime.toString()) {
+        if (timeEnd <= timeStart) {
+            Toast.makeText(
+                requireContext(),
+                "end time must be bigger than start time",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
 
-                    preference.edit().putInt(END_TIME, pETime!!.toInt()).apply()
-                }
-            }
-            if (major.text.toString() != pMajor) {
-                pMajor = major.text.toString()
-                updateTeacherInformation("major", pMajor!!)
-                preference.edit().putString(MAJOR, pMajor).apply()
-            }
-            if (level.selectedItem.toString() != pLevel) {
-                // pLevel = level.text.toString()
-                updateTeacherInformation("level", pLevel!!)
-                preference.edit().putString(LEVEL, pLevel).apply()
-            }
-            if (phoneNumber.text.toString() != pPhoneNumber) {
-                pPhoneNumber = phoneNumber.text.toString()
-                updateTeacherInformation("phoneNumber", pPhoneNumber!!)
-                preference.edit().putString(PHONE_NUMBER, pPhoneNumber).apply()
-            }
+            Log.e("sTime", "${statTime.text.toString()} GDFGFG")
+            pSTime = statTime.text.toString().toInt()
+            updateTeacherInformation("startTime", pSTime)
+            preference.edit().putInt(START_TIME, pSTime!!.toInt()).apply()
+        }
 
-            fun timePicker() {
-                val cal = Calendar.getInstance()
-                val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, _ ->
-                    cal.set(Calendar.HOUR_OF_DAY, hour)
-                    //set time to textView
-                    startTime.text = SimpleDateFormat("HH").format(cal.time)
-                    timeStart = hour.toLong()// startTime.text.toString().toInt()
-                    Toast.makeText(requireContext(), timeStart.toString(), Toast.LENGTH_SHORT)
-                        .show()
+    }
+    if (endTime.text.toString() != pETime.toString()) {
+        if (timeEnd <= timeStart) {
+            Toast.makeText(
+                requireContext(),
+                "end time must be bigger than start time",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
 
-                }
-                TimePickerDialog(
-                    requireContext(),
-                    timeSetListener,
-                    cal.get(Calendar.HOUR_OF_DAY),
-                    cal.get(Calendar.MINUTE),
-                    true
-                ).show()
-            }
+            pETime = endTime.text.toString().toInt()
+            updateTeacherInformation("endTime", pETime)
 
-            sTime.setOnClickListener {
-                timePicker()
-            }
-            eTime.setOnClickListener {
-                endTimePicker()
-            }
+            preference.edit().putInt(END_TIME, pETime!!.toInt()).apply()
+        }
+    }
+    if (major.text.toString() != pMajor) {
+        pMajor = major.text.toString()
+        updateTeacherInformation("major", pMajor!!)
+        preference.edit().putString(MAJOR, pMajor).apply()
+    }
+
+    if (phoneNumber.text.toString() != pPhoneNumber) {
+        pPhoneNumber = phoneNumber.text.toString()
+        updateTeacherInformation("phoneNumber", pPhoneNumber!!)
+        preference.edit().putString(PHONE_NUMBER, pPhoneNumber).apply()
+    }
+
+    fun timePicker() {
+        val cal = Calendar.getInstance()
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, _ ->
+            cal.set(Calendar.HOUR_OF_DAY, hour)
+            //set time to textView
+            startTime.text = SimpleDateFormat("HH").format(cal.time)
+            timeStart = hour.toLong()// startTime.text.toString().toInt()
+            Toast.makeText(requireContext(), timeStart.toString(), Toast.LENGTH_SHORT)
+                .show()
+
+        }
+        TimePickerDialog(
+            requireContext(),
+            timeSetListener,
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE),
+            true
+        ).show()
+    }
+
+    sTime.setOnClickListener {
+        timePicker()
+    }
+    eTime.setOnClickListener {
+        endTimePicker()
+    }
+}
         }
 
 

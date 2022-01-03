@@ -117,8 +117,43 @@ class SignupTeacher : Fragment() {
                             Toast.LENGTH_LONG
                         ).show()
 
-
                     }
+                    TextUtils.isEmpty(level.selectedItem.toString())-> {
+                        Toast.makeText(
+                            context,
+                            "choose level",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    TextUtils.isEmpty(subject.selectedItem.toString())-> {
+                        Toast.makeText(
+                            context,
+                            "choose subject",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    TextUtils.isEmpty(major.text.toString())-> {
+                        Toast.makeText(
+                            context,
+                            "enter your major",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    TextUtils.isEmpty(username.text.toString())-> {
+                        Toast.makeText(
+                            context,
+                            "enter your username",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    TextUtils.isEmpty(phoneNumber.text.toString())-> {
+                        Toast.makeText(
+                            context,
+                            "enter your number",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
                     // if not empty
                     else -> {
                         refAuth.createUserWithEmailAndPassword(

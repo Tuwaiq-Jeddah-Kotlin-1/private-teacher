@@ -73,11 +73,29 @@ class SignupStudent : Fragment() {
 
 
                 }
+                TextUtils.isEmpty(level.selectedItem.toString())->{
+                    Toast.makeText(
+                        context,
+                        "choose level",
+                    Toast.LENGTH_LONG
+                    ).show()
+                }
+                TextUtils.isEmpty(name.text.toString())->{
+                    Toast.makeText(
+                        context,
+                        "enter your name",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
                 // if not empty
                 else -> {
                     refAuth.createUserWithEmailAndPassword(
                         emaile.text.toString().trim().lowercase(),
-                        password.text.toString().trim()
+                        password.text.toString().trim(),
+
+
+
                     ).addOnCompleteListener { register ->
 
                         // if the registration is successfully done
