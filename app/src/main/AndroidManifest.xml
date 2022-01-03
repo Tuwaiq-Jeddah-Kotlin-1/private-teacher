@@ -16,13 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrivateTeacher">
         <activity
-            android:name=".ui.Splash"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

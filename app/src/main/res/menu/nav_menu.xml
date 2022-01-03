@@ -14,10 +14,10 @@
         android:icon="@drawable/ic_person"
         android:title="@string/profile"/>
 
-    <item
-        android:id="@+id/settingFragment"
+  <item
+       android:id="@+id/settingFragment"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/setting"/>
+     android:title="@string/setting"/>
 
 
 </menu>
