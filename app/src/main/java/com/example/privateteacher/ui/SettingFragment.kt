@@ -68,8 +68,6 @@ class SettingFragment : Fragment() {
                         setLocate(it, "en")
                     }
                 }
-
-
             }
         }
     }
