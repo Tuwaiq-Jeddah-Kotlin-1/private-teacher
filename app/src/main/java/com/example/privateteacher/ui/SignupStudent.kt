@@ -151,8 +151,7 @@ class SignupStudent : Fragment() {
         } catch (e: Exception) {
             //withContext(Dispatchers.Main) {
             Log.e("Exception", e.localizedMessage)
-            // Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-            //  }
+
         }
     }
 }

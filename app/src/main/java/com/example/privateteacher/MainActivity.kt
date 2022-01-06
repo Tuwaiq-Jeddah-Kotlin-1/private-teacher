@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,16 +18,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
         val sharedPreferencesSettings = this.getSharedPreferences("SHARED_PREF", Activity.MODE_PRIVATE)
         val language = sharedPreferencesSettings.getString("language", "")
+
         if (language.toString() == "ar") {
             //Toast.makeText(this, " arabic",Toast.LENGTH_LONG).show()
-            setLocate()
+            setLocate(this,"er")
 
         } else {
+            setLocate(this,"en")
             //Toast.makeText(this, "English", Toast.LENGTH_LONG).show()
         }
+
+
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navController = findNavController(R.id.fragmentContainerView)
@@ -40,11 +44,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-
-    private fun setLocate() {
+    private fun setLocate(activity: Activity , lang: String) {
         val locale = Locale("ar")
 
         Locale.setDefault(locale)
@@ -57,11 +57,4 @@ class MainActivity : AppCompatActivity() {
         this?.resources?.updateConfiguration(config, this.resources.displayMetrics)
 
     }
-
-
-
-
-
-
-
 }

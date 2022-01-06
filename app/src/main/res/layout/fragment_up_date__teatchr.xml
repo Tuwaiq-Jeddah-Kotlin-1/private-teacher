@@ -8,6 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content">
 
         <!--        android:layout_marginTop="32dp"     -->
@@ -35,6 +36,7 @@
             android:id="@+id/imageView5"
             android:layout_width="100dp"
             android:layout_height="100dp"
+
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:contentDescription="@string/top_icon"
@@ -92,14 +94,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TeacherUserName"
             tools:layout_editor_absoluteY="494dp" />
+<LinearLayout
+    android:id="@+id/spinnerlayout"
+    android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/major"
+
+    >
 
         <Spinner
-
             android:id="@+id/subject"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border"
             android:ems="10"
@@ -107,28 +119,25 @@
             android:hint="@string/subject"
             android:padding="16dp"
             android:spinnerMode="dropdown"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/major" />
+           />
 
         <Spinner
             android:id="@+id/uplevel"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/round_border"
+            android:layout_marginEnd="32dp"
             android:ems="10"
             android:entries="@array/Level"
             android:padding="16dp"
             android:spinnerMode="dropdown"
             android:text="@string/level"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/subject"
+            app:layout_constraintHorizontal_bias="0.835"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/major" />
+</LinearLayout>
 
         <TextView
             android:id="@+id/startTime"
@@ -143,7 +152,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.122"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subject" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerlayout" />
 
         <TextView
             android:id="@+id/endTime"
@@ -157,7 +166,7 @@
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/startIcon"
-            app:layout_constraintTop_toBottomOf="@+id/uplevel" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerlayout" />
 
         <ImageButton
             android:id="@+id/startIcon"

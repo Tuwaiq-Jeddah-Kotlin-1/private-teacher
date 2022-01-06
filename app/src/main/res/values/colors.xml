@@ -5,6 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="yellow">#D2E421</color>
     <color name="red">#DC0B1D</color>
+    <color name="cardColor">#7961A3</color>
+    <color name="cardColorRequest">#EDEAF1</color>
 
     <color name="green">#119C17</color>
     <color name="white">#FFFFFF</color>
@@ -12,7 +14,14 @@
     <color name="myyellow">#fbc366</color>
     <color name="myred">#fe5252</color>
     <color name="searchbk">#BFFFE6B1</color>
+    <color name="lightpige">#BFFBEAC6</color>
     <color name="pige">#ffdfa8</color>
     <color name="navy">#857bbb</color>
     <color name="black">#000000</color>
+    <color name="navvy">#96a4f6</color>
+    <color name="colorTheme">#ffdfa8</color>
+    <color name="colorTheme2">#fbc366</color>
+    <color name="colorSetting">#274884</color>
+
+
 </resources>
