@@ -2,9 +2,12 @@ package com.example.privateteacher
 
 import android.app.TimePickerDialog
 import android.content.Context
+import android.icu.number.NumberFormatter
+import android.icu.text.DateTimePatternGenerator
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -144,6 +147,15 @@ class UpdateTeacher : Fragment() {
 
 
         if (!isTeacher){
+              // level.gravity= Gravity.CENTER_HORIZONTAL
+           // level.width =ViewGroup.LayoutParams.WRAP_CONTENT
+            val params = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                weight = 1.0f
+                gravity = Gravity.CENTER
+            }
             subject.visibility=View.GONE
             statTime.visibility=View.GONE
             endTime.visibility=View.GONE
@@ -281,22 +293,6 @@ if (isTeacher) {
     }
 }
         }
-
-
-        /*    //student
-            if (name.text.toString() != studentName) {
-                studentName = name.text.toString()
-                updateStudent("name", studentName!!)
-                preference.edit().putString(NAME, studentName).apply()
-            }
-            val indexofPL = levelList.indexOf(pLevel)
-            level.setSelection(indexofPL)
-            if (level.selectedItem.toString() != studentLevel) {
-                updateStudent("level", pLevel!!)
-                preference.edit().putString(LEVEL, pLevel!!)
-            }
-    */
-
         fun endTimePicker() {
             val cal = Calendar.getInstance()
             val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, _ ->
@@ -339,14 +335,6 @@ if (isTeacher) {
 
 
     }
-
-    /* private fun updateStudent(name:String,level:String) {
-          upDateUserData.document(uId.toString())
-              .update(
-                  "name", name.toString(),
-                  "level", level.toString(),
-                  )
-      }*/
 }
 
 

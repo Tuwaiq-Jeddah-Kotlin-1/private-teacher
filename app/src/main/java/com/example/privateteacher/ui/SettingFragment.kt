@@ -11,12 +11,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.privateteacher.MainActivity
 import com.example.privateteacher.R
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_setting.*
 import java.util.*
 
 class SettingFragment : Fragment() {
@@ -24,6 +26,7 @@ class SettingFragment : Fragment() {
     private lateinit var preferences: SharedPreferences
     private lateinit var changelanguage: TextView
     private lateinit var languageToggleButton: MaterialButtonToggleGroup
+    private lateinit var themeToggleBtn:MaterialButtonToggleGroup
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +41,7 @@ class SettingFragment : Fragment() {
         signOut = view.findViewById(R.id.signOut)
         preferences = requireContext().getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
         changelanguage = view.findViewById(R.id.tvChangeLanguage)
+        themeToggleBtn=view.findViewById(R.id.Theme)
         signOut.setOnClickListener {
             preferences =
                 this.requireActivity().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
@@ -50,12 +54,40 @@ class SettingFragment : Fragment() {
             editor.apply()
             FirebaseAuth.getInstance().signOut()
             findNavController().navigate(R.id.action_settingFragment_to_login)
-
         }
 
-//        changelanguage.setOnClickListener {
-//            showChangeLanguage()
+
+        themeToggleBtn.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if (isChecked){
+                when(checkedId){
+                    R.id.Dark ->activity?.let {
+                        preferences.edit().putString("theme","dark").apply()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                    R.id.Light->activity?.let {
+                        preferences.edit().putString("theme","light").apply()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+
+                    }
+                }
+            }
+        }
+
+//        Dark.setOnClickListener {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//            val editor:  SharedPreferences.Editor = preferences.edit()
+//            editor.putString("theme", "dark")
+//            editor.apply()
 //        }
+//
+//        Light.setOnClickListener {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//            val editor:  SharedPreferences.Editor = preferences.edit()
+//            editor.putString("theme", "light")
+//            editor.apply()
+//        }
+
         languageToggleButton.addOnButtonCheckedListener { ToggleButtonGroup, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
@@ -71,6 +103,7 @@ class SettingFragment : Fragment() {
             }
         }
     }
+
     fun setLocate(activity: Activity, Lang: String) {
         val locale = Locale(Lang)
         Locale.setDefault(locale)
@@ -82,40 +115,4 @@ class SettingFragment : Fragment() {
         activity.finish()
 
     }
-
-
-
-//            fun showChangeLanguage() {
-//
-//                val listItmes = arrayOf("عربي", "English")
-//
-//
-//                val mBuilder = AlertDialog.Builder(this.requireContext())
-//
-//                mBuilder.setTitle("Choose Language")
-//
-//                mBuilder.setSingleChoiceItems(listItmes, -1) { dialog, which ->
-//                    if (which == 0) {
-//
-//                        //setLocate("ar")
-//                        setLocal("ar")
-//
-//                    } else if (which == 1) {
-//
-//                        setLocal("en")
-//
-//                    }
-//
-//                    dialog.dismiss()
-//
-//
-//                }
-//                val mDialog = mBuilder.create()
-//
-//                mDialog.show()
-//
-//
-//            }
-
-
         }

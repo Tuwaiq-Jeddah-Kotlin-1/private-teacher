@@ -16,9 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrivateTeacher">
         <activity
+            android:windowSoftInputMode="adjustNothing"
             android:name=".MainActivity"
             android:exported="true" />
         <activity
+            android:windowSoftInputMode="adjustNothing"
             android:name=".ui.Splash"
             android:exported="true">
             <intent-filter>

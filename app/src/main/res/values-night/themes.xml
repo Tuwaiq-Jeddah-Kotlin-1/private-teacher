@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.PrivateTeacher" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
-        <item name="colorOnPrimary">@color/colorAccent</item>
+        <item name="colorPrimary">@color/navvy</item>
+        <item name="colorPrimaryVariant">@color/navy</item>
+        <item name="colorOnPrimary">@color/navvy</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/colorPrimaryDark</item>
         <item name="colorSecondaryVariant">@color/colorPrimaryDark</item>

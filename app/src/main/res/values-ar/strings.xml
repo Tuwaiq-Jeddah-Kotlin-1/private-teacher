@@ -7,6 +7,12 @@
     <string name="facebook_icon">facebook icon</string>
     <string name="new_user_register_now">حساب جديد؟</string>
     <string name="name" >الاسم</string>
+    <string name="arabic">عربي</string>
+    <string name="Dark_mode">وضع ليلي</string>
+    <string name="Dark">غامق</string>
+    <string name="light">فاتح</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="Subject">
@@ -76,4 +82,7 @@
     <string name="setting">الاعدادات</string>
     <string name="textLevel">مستوى</string>
     <string name="new_teacher_register_now">تسجيل معلم جديد</string>
+    <string name="english">انجليزي</string>
+    <string name="Teacher_Information">معلومات المعلم</string>
+
 </resources>
