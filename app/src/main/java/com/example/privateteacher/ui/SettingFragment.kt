@@ -74,19 +74,6 @@ class SettingFragment : Fragment() {
             }
         }
 
-//        Dark.setOnClickListener {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//            val editor:  SharedPreferences.Editor = preferences.edit()
-//            editor.putString("theme", "dark")
-//            editor.apply()
-//        }
-//
-//        Light.setOnClickListener {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//            val editor:  SharedPreferences.Editor = preferences.edit()
-//            editor.putString("theme", "light")
-//            editor.apply()
-//        }
 
         languageToggleButton.addOnButtonCheckedListener { ToggleButtonGroup, checkedId, isChecked ->
             if (isChecked) {
