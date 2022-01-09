@@ -294,6 +294,7 @@ class SignupTeacher : Fragment() {
                 ).putString(LEVEL, level).putInt(START_TIME, starrtTime.toInt()).putInt(
                     END_TIME, endTime.toInt()
                 ).putString(PHONE_NUMBER, phoneNumber).putString(MAJOR, major).apply()
+                isTeacher=true
 
                 findNavController().navigate(R.id.home_fragment)
 

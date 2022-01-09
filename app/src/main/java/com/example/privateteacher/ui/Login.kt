@@ -12,20 +12,25 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.privateteacher.R
+import com.example.privateteacher.model.Student
+import com.example.privateteacher.model.Teacher
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.*
-var isTeacher:Boolean=false
+
+var isTeacher: Boolean = false
+
 class Login : Fragment() {
     private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var signupTeacher: TextView
     private lateinit var signupStudent: TextView
     private lateinit var btnLogin: Button
-    private lateinit var myShared : SharedPreferences
+    private lateinit var myShared: SharedPreferences
     var isRemember = false
-    private lateinit var remember : CheckBox
+    private lateinit var remember: CheckBox
 
 
     override fun onCreateView(
@@ -47,15 +52,22 @@ class Login : Fragment() {
         signupStudent = view.findViewById(R.id.gotoStudentRegister)
         remember = view.findViewById(R.id.check_rem)
         signupTeacher.setOnClickListener {
-            findNavController().navigate(R.id.signupTeacher)
+            findNavController().navigate(R.id.action_login_to_signupTeacher)
         }
         signupStudent.setOnClickListener {
-            findNavController().navigate(R.id.signupStudent)
+            findNavController().navigate(R.id.action_login_to_signupStudent)
         }
         myShared = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
         isRemember = myShared.getBoolean("CHECKBOX", false)
-        if (isRemember){
-            findNavController().navigate(R.id.home_fragment)
+        val tech = myShared.getString(TYPE, STUDENT)
+        if (isRemember) {
+            if (tech == STUDENT) {
+                isTeacher = false
+                findNavController().navigate(R.id.action_login_to_home_fragment2)
+            } else {
+                isTeacher = true
+                findNavController().navigate(R.id.action_login_to_requestFragment)
+            }
         }
         btnLogin.setOnClickListener {
 
@@ -94,21 +106,18 @@ class Login : Fragment() {
                                     "Welcome",
                                     Toast.LENGTH_LONG
                                 ).show()
-                                val editor : SharedPreferences.Editor = myShared.edit()
+                                val editor: SharedPreferences.Editor = myShared.edit()
                                 val emilData = email
                                 val passwordPref = password
                                 val check: Boolean = remember.isChecked
                                 editor.putString(EMAIL, emilData)
-                                editor.putBoolean("CHECKBOX",check )
+                                editor.putBoolean("CHECKBOX", check)
                                 editor.apply()
-                                Toast.makeText(context,"Information Saved!",Toast.LENGTH_LONG).show()
-                                findNavController().navigate(R.id.home_fragment)
-
-
-                                val userID=FirebaseAuth.getInstance().currentUser?.uid
-cheakStudentOrTeacher(userID.toString())
-
-
+                                Toast.makeText(context, "Information Saved!", Toast.LENGTH_LONG)
+                                    .show()
+                                val userID = FirebaseAuth.getInstance().currentUser?.uid
+                                cheakStudentOrTeacher(userID.toString())
+//                                findNavController().navigate(R.id.action_login_to_home_fragment2)
                             } else {
                                 // if the registreation is not succsesful then show error massage
                                 Toast.makeText(
@@ -118,45 +127,54 @@ cheakStudentOrTeacher(userID.toString())
                                 ).show()
                             }
                         }
-
                 }
-
-
             }
-
         }
-
     }
 
-    fun cheakStudentOrTeacher(userID:String) = CoroutineScope(Dispatchers.IO).launch {
-        val editor : SharedPreferences.Editor = myShared.edit()
+    fun cheakStudentOrTeacher(userID: String) = CoroutineScope(Dispatchers.IO).launch {
+        val editor: SharedPreferences.Editor = myShared.edit()
 
         try {
             val db = FirebaseFirestore.getInstance()
             db.collection("Teacher")
                 .document("$userID")
-                .get().addOnCompleteListener { it
-
+                .get().addOnCompleteListener {
                     if (it.result?.exists()!!) {
 
-Toast.makeText(context,"i am teacher",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "i am teacher", Toast.LENGTH_SHORT).show()
                         editor.putString(TYPE, TEACHER).apply()
+                        db.collection("Teacher")
+                            .document("$userID")
+                            .get().addOnSuccessListener {
+                                val teacher = it.toObject<Teacher>()
+                                teacher?.let {
+                                    editor.putString(NAME, teacher.name)
+                                        .putString(SUBJECT, teacher.subject).putString(
+                                        MAJOR, teacher.major
+                                    ).putString(LEVEL, teacher.level)
+                                        .putInt(START_TIME, teacher.startTime.toInt()).putInt(
+                                        END_TIME, teacher.endTime.toInt()
+                                    ).putString(PHONE_NUMBER, teacher.phoneNumber).apply()
+                                }
+                            }
 
-                        findNavController().popBackStack()
-                        findNavController().navigate(R.id.requestFragment)
                         isTeacher = true
-
+                        findNavController().navigate(R.id.action_login_to_requestFragment)
                     } else {
-                        Toast.makeText(context,"i am student",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "i am student", Toast.LENGTH_SHORT).show()
                         editor.putString(TYPE, STUDENT).apply()
-
-                        findNavController().popBackStack()
-                        findNavController().navigate(R.id.home_fragment)
-                        isTeacher=false
-
-
+                        db.collection("Student")
+                            .document("$userID")
+                            .get().addOnSuccessListener {
+                                val student = it.toObject<Student>()
+                                student?.let {
+                                    editor.putString(NAME, student.name).putString(LEVEL, student.level).apply()
+                                }
+                            }
+                        isTeacher = false
+                        findNavController().navigate(R.id.action_login_to_home_fragment2)
                     }
-
 
 
                 }

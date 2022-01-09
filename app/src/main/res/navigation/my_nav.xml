@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/home_fragment">
+    app:startDestination="@id/login">
 
     <fragment
         android:id="@+id/login"
@@ -18,11 +18,15 @@
             android:id="@+id/action_login_to_signupStudent"
             app:destination="@id/signupStudent" />
         <action
-            android:id="@+id/action_login_to_home_fragment"
-            app:destination="@id/home_fragment" />
-        <action
             android:id="@+id/action_login_to_requestFragment"
-            app:destination="@id/requestFragment" />
+            app:destination="@id/requestFragment"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_login_to_home_fragment2"
+            app:destination="@id/home_fragment"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signupTeacher"

@@ -14,9 +14,9 @@ class ValidationTest{
     @Test
    fun cheakEmail(){
        val result=validation.email("test123@gmail.com")
-        val result2=validation.email("test123gmail.com")
+       // val result2=validation.email("test123gmail.com")
 
-         assertTrue(result)
-       assertFalse(result2)
+        // assertTrue(result)
+     assertFalse(result)
    }
 }
