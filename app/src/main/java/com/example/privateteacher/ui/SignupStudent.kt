@@ -139,13 +139,10 @@ class SignupStudent : Fragment() {
     private fun saveUserFireStore(student: Student) {// = CoroutineScope(Dispatchers.IO).launch {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
         try {
-            db.collection("Student").document("$uid").set(student).addOnSuccessListener {
+            db.collection("Student").document("$uid").set(student)
+                .addOnSuccessListener {
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
-
-
-
-
-                findNavController().navigate(R.id.home_fragment)
+                findNavController().navigate(R.id.action_signupStudent_to_home_fragment)
             }
 
         } catch (e: Exception) {

@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 class UpdateTeacher : Fragment() {
     private lateinit var db: FirebaseFirestore
     lateinit var Update: Button
-    lateinit var name:EditText
+    lateinit var name: EditText
     private lateinit var subject: Spinner
     private lateinit var level: Spinner
     private lateinit var statTime: TextView
@@ -50,7 +50,7 @@ class UpdateTeacher : Fragment() {
 
     // HERE SAVE THE VALUE
     private var timeStart: Long = 0
-    private var timeEnd:Long = 0
+    private var timeEnd: Long = 0
 
 
     override fun onCreateView(
@@ -62,19 +62,19 @@ class UpdateTeacher : Fragment() {
     }
 
     fun updateTeacherInformation(field: String, value: Any) {
-        var type:String
-        if (!isTeacher){
-            type="Student"
-        }else{
-            type="Teacher"
+        var type: String
+        if (!isTeacher) {
+            type = "Student"
+        } else {
+            type = "Teacher"
         }
         db.collection(type).document(uId!!).update(field, value)
             .addOnCompleteListener {
                 it.addOnSuccessListener {
-                    Log.e("updateUser", "success")
+                    Log.e("updateUser", "success $field $value")
                 }
                 it.addOnFailureListener {
-                    Log.e("updateUser", it.message.toString())
+                    Log.e("updateUser", it.message.toString() +" $field")
                 }
             }
     }
@@ -146,23 +146,23 @@ class UpdateTeacher : Fragment() {
         var pType = preference.getString(TYPE, "")
 
 
-        if (!isTeacher){
-              // level.gravity= Gravity.CENTER_HORIZONTAL
-           // level.width =ViewGroup.LayoutParams.WRAP_CONTENT
+        if (!isTeacher) {
+            // level.gravity= Gravity.CENTER_HORIZONTAL
+            // level.width =ViewGroup.LayoutParams.WRAP_CONTENT
             val params = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply {
                 weight = 1.0f
                 gravity = Gravity.CENTER
             }
-            subject.visibility=View.GONE
-            statTime.visibility=View.GONE
-            endTime.visibility=View.GONE
-            phoneNumber.visibility=View.GONE
-            major.visibility=View.GONE
-            sTime.visibility=View.GONE
-            eTime.visibility=View.GONE
+            subject.visibility = View.GONE
+            statTime.visibility = View.GONE
+            endTime.visibility = View.GONE
+            phoneNumber.visibility = View.GONE
+            major.visibility = View.GONE
+            sTime.visibility = View.GONE
+            eTime.visibility = View.GONE
         }
 
         name.setText(pName)
@@ -209,89 +209,89 @@ class UpdateTeacher : Fragment() {
                 preference.edit().putString(NAME, pName).apply()
             }
 
-                if (level.selectedItem.toString() != pLevel) {
-                    // pLevel = level.text.toString()
-                    updateTeacherInformation("level", pLevel!!)
-                    preference.edit().putString(LEVEL, pLevel).apply()
+            if (level.selectedItem.toString() != pLevel) {
+                 pLevel = levelList[level.selectedItemPosition]
+                updateTeacherInformation("level", pLevel!!)
+                preference.edit().putString(LEVEL, pLevel).apply()
+            }
+            if (isTeacher) {
+                if (subject.selectedItem.toString() != pSubject) {
+                    pSubject = subject.selectedItem.toString()
+                    updateTeacherInformation("subject", pSubject!!)
+
+                    preference.edit().putString(SUBJECT, pSubject).apply()
+
                 }
-if (isTeacher) {
-    if (subject.selectedItem.toString() != pSubject) {
-        pSubject = subject.selectedItem.toString()
-        updateTeacherInformation("subject", pSubject!!)
+                if (statTime.text.toString() != pSTime.toString()) {
+                    if (timeEnd <= timeStart) {
+                        Toast.makeText(
+                            requireContext(),
+                            "end time must be bigger than start time",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
 
-        preference.edit().putString(SUBJECT, pSubject).apply()
+                        Log.e("sTime", "${statTime.text.toString()} GDFGFG")
+                        pSTime = statTime.text.toString().toInt()
+                        updateTeacherInformation("startTime", pSTime)
+                        preference.edit().putInt(START_TIME, pSTime!!.toInt()).apply()
+                    }
 
-    }
-    if (statTime.text.toString() != pSTime.toString()) {
-        if (timeEnd <= timeStart) {
-            Toast.makeText(
-                requireContext(),
-                "end time must be bigger than start time",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else {
+                }
+                if (endTime.text.toString() != pETime.toString()) {
+                    if (timeEnd <= timeStart) {
+                        Toast.makeText(
+                            requireContext(),
+                            "end time must be bigger than start time",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
 
-            Log.e("sTime", "${statTime.text.toString()} GDFGFG")
-            pSTime = statTime.text.toString().toInt()
-            updateTeacherInformation("startTime", pSTime)
-            preference.edit().putInt(START_TIME, pSTime!!.toInt()).apply()
-        }
+                        pETime = endTime.text.toString().toInt()
+                        updateTeacherInformation("endTime", pETime)
 
-    }
-    if (endTime.text.toString() != pETime.toString()) {
-        if (timeEnd <= timeStart) {
-            Toast.makeText(
-                requireContext(),
-                "end time must be bigger than start time",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else {
+                        preference.edit().putInt(END_TIME, pETime!!.toInt()).apply()
+                    }
+                }
+                if (major.text.toString() != pMajor) {
+                    pMajor = major.text.toString()
+                    updateTeacherInformation("major", pMajor!!)
+                    preference.edit().putString(MAJOR, pMajor).apply()
+                }
 
-            pETime = endTime.text.toString().toInt()
-            updateTeacherInformation("endTime", pETime)
+                if (phoneNumber.text.toString() != pPhoneNumber) {
+                    pPhoneNumber = phoneNumber.text.toString()
+                    updateTeacherInformation("phoneNumber", pPhoneNumber!!)
+                    preference.edit().putString(PHONE_NUMBER, pPhoneNumber).apply()
+                }
 
-            preference.edit().putInt(END_TIME, pETime!!.toInt()).apply()
-        }
-    }
-    if (major.text.toString() != pMajor) {
-        pMajor = major.text.toString()
-        updateTeacherInformation("major", pMajor!!)
-        preference.edit().putString(MAJOR, pMajor).apply()
-    }
+                fun timePicker() {
+                    val cal = Calendar.getInstance()
+                    val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, _ ->
+                        cal.set(Calendar.HOUR_OF_DAY, hour)
+                        //set time to textView
+                        startTime.text = SimpleDateFormat("HH").format(cal.time)
+                        timeStart = hour.toLong()// startTime.text.toString().toInt()
+                        Toast.makeText(requireContext(), timeStart.toString(), Toast.LENGTH_SHORT)
+                            .show()
 
-    if (phoneNumber.text.toString() != pPhoneNumber) {
-        pPhoneNumber = phoneNumber.text.toString()
-        updateTeacherInformation("phoneNumber", pPhoneNumber!!)
-        preference.edit().putString(PHONE_NUMBER, pPhoneNumber).apply()
-    }
+                    }
+                    TimePickerDialog(
+                        requireContext(),
+                        timeSetListener,
+                        cal.get(Calendar.HOUR_OF_DAY),
+                        cal.get(Calendar.MINUTE),
+                        true
+                    ).show()
+                }
 
-    fun timePicker() {
-        val cal = Calendar.getInstance()
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, _ ->
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            //set time to textView
-            startTime.text = SimpleDateFormat("HH").format(cal.time)
-            timeStart = hour.toLong()// startTime.text.toString().toInt()
-            Toast.makeText(requireContext(), timeStart.toString(), Toast.LENGTH_SHORT)
-                .show()
-
-        }
-        TimePickerDialog(
-            requireContext(),
-            timeSetListener,
-            cal.get(Calendar.HOUR_OF_DAY),
-            cal.get(Calendar.MINUTE),
-            true
-        ).show()
-    }
-
-    sTime.setOnClickListener {
-        timePicker()
-    }
-    eTime.setOnClickListener {
-        endTimePicker()
-    }
-}
+                sTime.setOnClickListener {
+                    timePicker()
+                }
+                eTime.setOnClickListener {
+                    endTimePicker()
+                }
+            }
         }
         fun endTimePicker() {
             val cal = Calendar.getInstance()

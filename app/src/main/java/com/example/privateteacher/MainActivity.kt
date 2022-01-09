@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
 
 
         val sharedPreferencesSettings = this.getSharedPreferences("SHARED_PREF", Activity.MODE_PRIVATE)
-        val language = sharedPreferencesSettings.getString("language", "")
+        val language = sharedPreferencesSettings.getString("LOCALE", "")
 
         if (language.toString() == "ar") {
             //Toast.makeText(this, " arabic",Toast.LENGTH_LONG).show()
-            setLocate(this,"er")
+            setLocate(this,"ar")
 
         } else {
             setLocate(this,"en")
@@ -45,16 +45,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun setLocate(activity: Activity , lang: String) {
-        val locale = Locale("ar")
-
+        val locale = Locale(lang)
         Locale.setDefault(locale)
+        val resources = activity.resources
+        val config:Configuration = resources.configuration
 
-        val config = Configuration()
-
-        config.locale = locale
+        config.setLocale(locale)
 
         //---------------------------------------------------------------
-        this?.resources?.updateConfiguration(config, this.resources.displayMetrics)
+//        this?.resources?.updateConfiguration(config, this.resources.displayMetrics)
+        resources.updateConfiguration(config, resources.displayMetrics)
 
     }
 }
