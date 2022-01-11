@@ -14,5 +14,5 @@ App Media :android
 # 📸 Screenshots
  ![student request](StudentRequest.gif)
  
-  <img src="TeacherRequest.gif" alt="alt text" width="50" height="whatever">
+  <img src="TeacherRequest.gif" alt="alt text" width="70" height="whatever">
 
