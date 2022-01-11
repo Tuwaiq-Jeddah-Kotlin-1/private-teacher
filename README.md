@@ -13,5 +13,6 @@ work manger for notification
 App Media :android
 # 📸 Screenshots
  ![student request](StudentRequest.gif)
-  ![teacher request](TeacherRequest.gif | width=50)
+ 
+  <img src="TeacherRequest.gif" alt="alt text" width="50" height="whatever">
 
