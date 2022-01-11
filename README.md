@@ -13,5 +13,5 @@ work manger for notification
 App Media :android
 # 📸 Screenshots
  ![student request](StudentRequest.gif)
-  ![teacher request](TeacherRequest.gif)
+  ![teacher request](TeacherRequest.gif width=50)
 
