@@ -12,4 +12,4 @@ Firestore for storing teacher, student and request information
 work manger for notification
 App Media :android
 # 📸 Screenshots
- ![student request](Student request.gif)
+ ![student request](StudentRequest.gif)
