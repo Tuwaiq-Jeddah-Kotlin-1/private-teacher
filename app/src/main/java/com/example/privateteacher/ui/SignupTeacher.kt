@@ -286,7 +286,7 @@ class SignupTeacher : Fragment() {
 
         try {
             db.collection("Teacher").document(uid!!).set(teacher).addOnSuccessListener {
-                Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
 //save in shared preference
                 val preference = requireContext().getSharedPreferences(PREFERENCE, MODE_PRIVATE)
                 preference.edit().putString(NAME, username).putString(SUBJECT, subject).putString(

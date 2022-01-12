@@ -142,7 +142,7 @@ class Login : Fragment() {
                 .get().addOnCompleteListener {
                     if (it.result?.exists()!!) {
 
-                        Toast.makeText(context, "i am teacher", Toast.LENGTH_SHORT).show()
+                   //     Toast.makeText(context, "i am teacher", Toast.LENGTH_SHORT).show()
                         editor.putString(TYPE, TEACHER).apply()
                         db.collection("Teacher")
                             .document("$userID")
@@ -162,7 +162,7 @@ class Login : Fragment() {
                         isTeacher = true
                         findNavController().navigate(R.id.action_login_to_requestFragment)
                     } else {
-                        Toast.makeText(context, "i am student", Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(context, "i am student", Toast.LENGTH_SHORT).show()
                         editor.putString(TYPE, STUDENT).apply()
                         db.collection("Student")
                             .document("$userID")

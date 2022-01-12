@@ -31,7 +31,6 @@ class HomeFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         search=view.findViewById(R.id.search)
@@ -44,12 +43,10 @@ class HomeFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 myAdapter.filter.filter(newText)
                 return false
             }
-
         })
     }
 
@@ -68,18 +65,7 @@ class HomeFragment : Fragment() {
                     myAdapter = MyAdapter(value.toObjects(Teacher::class.java))
                     recyclerView.adapter = myAdapter
                 }
-
-
-
-
-
-
             }
-
         })
-
     }
-
-
-
 }

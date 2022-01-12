@@ -67,10 +67,6 @@ class DetailFragment : Fragment() {
         major = view.findViewById(R.id.major)
         spinner = view.findViewById(R.id.from)
 
-
-
-
-
         name.text = receivedData.name
         teacherUid = receivedData.teacherId
         subject.text = receivedData.subject

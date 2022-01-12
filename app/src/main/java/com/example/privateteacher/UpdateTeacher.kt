@@ -330,10 +330,7 @@ class UpdateTeacher : Fragment() {
                     "phoneNumber", phoneNumber.toString().toInt(),
                     "major", major.toString()
                 )
-
         }
-
-
     }
 }
 
