@@ -59,7 +59,7 @@ class RequestFragment : Fragment() {
                .document("$userID")
                .get().addOnCompleteListener {
                    it
-                    if (it.result?.exists()!!) {//    com.google.android.gms.tasks.RuntimeExecutionException: com.google.firebase.firestore.FirebaseFirestoreException: Failed to get document because the client is offline.
+                    if (it.result?.exists()!!) {
 
                         requestTeacher()
                       preference.edit().putString(TYPE,TEACHER).apply()

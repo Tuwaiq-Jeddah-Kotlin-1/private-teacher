@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         config.setLocale(locale)
 
         //---------------------------------------------------------------
-//        this?.resources?.updateConfiguration(config, this.resources.displayMetrics)
         resources.updateConfiguration(config, resources.displayMetrics)
 
     }

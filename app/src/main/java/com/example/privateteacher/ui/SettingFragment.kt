@@ -73,8 +73,6 @@ class SettingFragment : Fragment() {
                 }
             }
         }
-
-
         languageToggleButton.addOnButtonCheckedListener { ToggleButtonGroup, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {

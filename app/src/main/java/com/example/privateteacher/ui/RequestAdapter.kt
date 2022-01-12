@@ -43,6 +43,7 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
         holder.timeval.text = request.timeVal.toString()
         holder.stateText.text = request.state
         holder.idRequest=request.idrequest
+        changeColorState(holder,"Pending")
 
        if (isTeacher){
            if(request.state == "Pending"){
@@ -97,13 +98,18 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
             requestList.removeAt(position)
             notifyDataSetChanged()
         }
-        //notifyDataSetChanged()
     }
 
     fun changeColorState(holder: MyHolder, state:String){
         holder.acceptButton.visibility = View.GONE
         holder.rejectButton.visibility = View.GONE
-        if (state == "accept"){
+        if (state == "Pending") {
+
+            val unwrappedDrawable: Drawable = holder.state.getBackground()
+            val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable)
+            DrawableCompat.setTint(wrappedDrawable, Color.YELLOW)
+        }
+            if (state == "accept"){
 
             val unwrappedDrawable: Drawable = holder.state.getBackground()
             val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable)
@@ -114,7 +120,6 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
             val unwrappedDrawable: Drawable = holder.state.getBackground()
             val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable)
             DrawableCompat.setTint(wrappedDrawable, Color.RED)
-
         }
     }
 }
@@ -128,6 +133,4 @@ class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var rejectButton: Button = itemView.findViewById(R.id.rejectBtn)
     var deletRequst:ImageView=itemView.findViewById(R.id.deletRequest)
     lateinit var idRequest:String
-
-
 }

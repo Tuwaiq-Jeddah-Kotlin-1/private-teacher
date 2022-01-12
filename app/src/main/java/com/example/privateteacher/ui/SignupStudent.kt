@@ -141,7 +141,7 @@ class SignupStudent : Fragment() {
         try {
             db.collection("Student").document("$uid").set(student)
                 .addOnSuccessListener {
-                Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_signupStudent_to_home_fragment)
             }
 
