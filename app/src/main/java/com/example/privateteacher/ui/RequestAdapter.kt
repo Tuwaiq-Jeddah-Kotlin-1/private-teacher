@@ -41,7 +41,17 @@ class RequestAdapter(private val requestList: ArrayList<Request>) :
         val request: Request = requestList[position]
         holder.subject.text = request.subject
         holder.timeval.text = request.timeVal.toString()
-        holder.stateText.text = request.state
+holder.studentName.text=request.name
+       // holder.stateText.text = request.state
+        if (request.state=="Pending"){
+            holder.stateText.text = holder.itemView.getContext().getString(R.string.Pending)
+        }else if(request.state=="accept"){
+            holder.stateText.text = holder.itemView.getContext().getString(R.string.accept)
+
+        }else if(request.state=="reject"){
+            holder.stateText.text = holder.itemView.getContext().getString(R.string.reject)
+
+        }
         holder.idRequest=request.idrequest
         changeColorState(holder,"Pending")
 
@@ -132,5 +142,7 @@ class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var acceptButton: Button = itemView.findViewById(R.id.acceptBtn)
     var rejectButton: Button = itemView.findViewById(R.id.rejectBtn)
     var deletRequst:ImageView=itemView.findViewById(R.id.deletRequest)
+    var studentName:TextView=itemView.findViewById(R.id.name)
+
     lateinit var idRequest:String
 }

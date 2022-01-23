@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.privateteacher.ui.PREFERENCE
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -15,12 +16,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
-        val sharedPreferencesSettings = this.getSharedPreferences("SHARED_PREF", Activity.MODE_PRIVATE)
+        val sharedPreferencesSettings = this.getSharedPreferences(PREFERENCE, Activity.MODE_PRIVATE)
         val language = sharedPreferencesSettings.getString("LOCALE", "")
-
         if (language.toString() == "ar") {
             //Toast.makeText(this, " arabic",Toast.LENGTH_LONG).show()
             setLocate(this,"ar")
@@ -29,9 +26,7 @@ class MainActivity : AppCompatActivity() {
             setLocate(this,"en")
             //Toast.makeText(this, "English", Toast.LENGTH_LONG).show()
         }
-
-
-
+        setContentView(R.layout.activity_main)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navController = findNavController(R.id.fragmentContainerView)
         bottomNavigationView.setupWithNavController(navController)
@@ -54,6 +49,5 @@ class MainActivity : AppCompatActivity() {
 
         //---------------------------------------------------------------
         resources.updateConfiguration(config, resources.displayMetrics)
-
     }
 }

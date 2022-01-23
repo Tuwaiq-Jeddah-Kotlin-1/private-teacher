@@ -162,7 +162,6 @@ class RequestFragment : Fragment() {
                 }
 
             })
-
     }
 
 }

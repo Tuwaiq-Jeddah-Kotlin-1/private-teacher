@@ -34,6 +34,8 @@ class UpdateTeacher : Fragment() {
     private lateinit var phoneNumber: EditText
     private lateinit var sTime: ImageButton
     private lateinit var eTime: ImageButton
+    //private lateinit var levelStudent:Spinner
+    private lateinit var spinnerLayout:LinearLayout
     private var subjectList: List<String> = listOf(
         "MATH",
         "The holy Quran and its recitation",
@@ -133,6 +135,8 @@ class UpdateTeacher : Fragment() {
         eTime = view.findViewById(R.id.endIcon)
         phoneNumber = view.findViewById(R.id.phoneNumber)
         major = view.findViewById(R.id.major)
+        //levelStudent=view.findViewById(R.id.levvel)
+        //spinnerLayout=view.findViewById(R.id.spinnerlayout)
         db = FirebaseFirestore.getInstance()
 
         val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
@@ -157,6 +161,7 @@ class UpdateTeacher : Fragment() {
                 gravity = Gravity.CENTER
             }
             subject.visibility = View.GONE
+          //  levelStudent.visibility=View.VISIBLE
             statTime.visibility = View.GONE
             endTime.visibility = View.GONE
             phoneNumber.visibility = View.GONE

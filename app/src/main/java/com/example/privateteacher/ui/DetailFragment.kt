@@ -1,6 +1,7 @@
 package com.example.privateteacher.ui
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -88,15 +89,9 @@ class DetailFragment : Fragment() {
         }
 
         scheduleBtn.setOnClickListener {
-
-
-
-
             val dialog = AlertDialog.Builder(requireContext())//.setView(R.layout.spinner_dialog)
             val viewSpinner = layoutInflater.inflate(R.layout.spinner_dialog, null)
             dialog.setTitle(R.string.choose_time)
-
-
 
             val timeSpinner = viewSpinner.findViewById<Spinner>(R.id.dialog_spinner)
 
@@ -124,7 +119,6 @@ class DetailFragment : Fragment() {
 
                     )
                 }
-
             )
             dialog.setNegativeButton(
                 R.string.cancel,
@@ -135,8 +129,6 @@ class DetailFragment : Fragment() {
             dialog.create().show()
 
         }
-
-
     }
 
     private fun fillTimeList() {
@@ -158,12 +150,17 @@ class DetailFragment : Fragment() {
         teacherUid: String,
         studentUid: String
     ) {
+
+        val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
+        var pName = preference.getString(NAME, "")
+        Toast.makeText(context,"name ${pName.toString()}",Toast.LENGTH_SHORT).show()
         val request = Request(
 
             subject = subject,
             timeVal = timeVal,
             teacherUid = teacherUid,
             studentUid = studentUid,
+            name = pName.toString()
         )
 
         val current = LocalDateTime.now()
@@ -181,8 +178,6 @@ class DetailFragment : Fragment() {
         try {
 
             db.collection("Request").document(request.idrequest).set(request).addOnSuccessListener {
-
-
                 Toast.makeText(context, "Successfully saved data.", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.requestFragment)
             }
@@ -192,6 +187,5 @@ class DetailFragment : Fragment() {
 
         }
     }
-
 }
 

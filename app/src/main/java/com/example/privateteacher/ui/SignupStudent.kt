@@ -129,6 +129,7 @@ class SignupStudent : Fragment() {
 
     private fun saveData(name: String, emaile: String,level:String) {
         val student = Student(name = name, email = emaile,level=level)
+
         val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
         preference.edit().putString(NAME, name).putString(LEVEL, level).apply()
 

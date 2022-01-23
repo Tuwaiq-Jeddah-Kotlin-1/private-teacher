@@ -84,5 +84,6 @@
     <string name="new_teacher_register_now">تسجيل معلم جديد</string>
     <string name="english">انجليزي</string>
     <string name="Teacher_Information">معلومات المعلم</string>
+    <string name="Pending">معلق</string>
 
 </resources>
