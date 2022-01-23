@@ -130,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvChangeLanguage"
         app:singleSelection="true">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/englishBtn"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="110dp"
@@ -138,7 +138,7 @@
             android:text="@string/english" />
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/arabicBtn"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="110dp"
@@ -173,7 +173,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ChangeTheme"
         app:singleSelection="true">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Dark"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="110dp"
@@ -181,7 +181,7 @@
             android:text="@string/Dark" />
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Light"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="110dp"

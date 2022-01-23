@@ -15,8 +15,10 @@ data class Request (
 var dateReq:String=formatted,
 var idrequest:String="",
     var subject:String="",
+
     var timeVal:Int=0,
     var teacherUid:String="",
     var studentUid:String="",
 var state:String="Pending",
+var name :String=""
         ):Parcelable

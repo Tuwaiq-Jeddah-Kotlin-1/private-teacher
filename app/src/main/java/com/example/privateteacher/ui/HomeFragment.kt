@@ -1,5 +1,6 @@
 package com.example.privateteacher.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -52,7 +53,9 @@ class HomeFragment : Fragment() {
 
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        db.collection("Teacher").addSnapshotListener(object : EventListener<QuerySnapshot> {
+        val preference = requireContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
+        var pLevel = preference.getString(LEVEL, "")
+        db.collection("Teacher").whereEqualTo("level", pLevel.toString()).addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(
                 value: QuerySnapshot?,
                 error: FirebaseFirestoreException?
